@@ -7,13 +7,12 @@
     <body>
         <header>
             @auth
-            <div class="sm:flex sm:items-center sm:ml-6">
+            <div class="flex justify-between items-center">
+            <h1 class="text-lg font-semibold">Component 2</h1>
                 <x-dropdown align="left" width="48">
                     <x-slot name="trigger">
                         <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                            <div>{{ Auth::user()->name }}
-                            </div>
-                            
+                            <div>{{ Auth::user()->name }}</div>
                             <div class="ml-1">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -21,40 +20,55 @@
                             </div>
                         </button>
                     </x-slot>
+
                     <x-slot name="content">
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                                @if(Auth::user()->is_admin==1)
-                                Administrator
-                                @else
-                                Customer
-                                @endif
+                        @if(Auth::user()->is_admin==1)
+                        Administrator
+                        @else
+                        Customer
+                        @endif
+                        <div style="text-align: right;">
                         <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
                         {{ __('Log Out') }}
                         </x-dropdown-link>
                         </form>
                     </x-slot>
+                    </div>
                 </x-dropdown>
             </div>             
 @else
-    <div class="flex justify-between items-center ">
-        <h1 class="text-lg font-semibold ">Component 2</h1>
+    <div class="flex justify-between items-center">
+        <h1 class="text-lg font-semibold">Component 2</h1>
         <div style="text-align: right;">
             <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
             @if (Route::has('register'))
             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
         </div>
-    </div>
      @endif
+    </div>
 @endif
+
+
         </header>
+
+        <style>
+        .line {
+            border-bottom: 2px solid blue;
+            margin-top: 5px;
+            width: 100%;
+        }
+        
+        </style>
         <section>
-            <p>MAIN CONTENT</p>
+        <div class="line"></div>
+        <div class="line"></div>
+        <!-- <p>MAIN CONTENT</p> -->
         </section>
         <footer>
             <p>Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})</p>
         </footer>
     </body>
-
 </html>
