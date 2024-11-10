@@ -68,10 +68,13 @@
 {{ $slot }}
         <!-- <p>MAIN CONTENT</p> -->
         </section>
-        
+        <section>
+        <div class="line"></div>
+        <div class="line"></div>
+        </section>
 
         <footer>
-            <p>Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})</p>
+            <p class="text-right">Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})</p>
         </footer>
     </body>
 </html>
