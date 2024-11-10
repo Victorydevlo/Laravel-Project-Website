@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -13,7 +14,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        return view('products',['products'=>$products]);
     }
 
     /**
@@ -35,9 +37,11 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(int $id)
     {
-        //
+        $product = Product::find($id);
+        $products = array($product); //this is because product.blade view is expecting an array. This makes it a list of one
+        return view('product',['products'=>$products]);
     }
 
     /**

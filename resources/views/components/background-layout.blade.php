@@ -26,9 +26,9 @@
                         <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         @if(Auth::user()->is_admin==1)
-                        Administrator
+                            Administrator
                         @else
-                        Customer
+                            Customer
                         @endif
                         <div style="text-align: right;">
                         <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
@@ -65,8 +65,11 @@
         <section>
         <div class="line"></div>
         <div class="line"></div>
+{{ $slot }}
         <!-- <p>MAIN CONTENT</p> -->
         </section>
+        
+
         <footer>
             <p>Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})</p>
         </footer>
