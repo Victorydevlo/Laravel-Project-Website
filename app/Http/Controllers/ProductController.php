@@ -41,7 +41,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $products = array($product); //this is because product.blade view is expecting an array. This makes it a list of one
-        return view('product',['products'=>$products]);
+        return view('products',['products'=>$products]);
     }
 
     /**
