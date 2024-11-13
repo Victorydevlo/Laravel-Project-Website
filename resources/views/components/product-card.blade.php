@@ -1,16 +1,23 @@
 <div class="products-container"> 
 <div class="product-card">
-   <p>{{$product->name}}</p>
-   <p>{{$product->title}}</p>
-   <p>{{$product->price}}</p>
+   <p class="text-xl font-semibold text-gray-800 text-center">{{$product->name}}</p>
+   <p class="text-base text-center">{{$product->title}}</p>
+   <p class="text-sm text-center">£{{$product->price}}</p>
 
-   <div class="rounded-sm bg-yellow-300 hover:bg-blue-700 p-2 m-2 w-24">  
-   <a href="/product/{{$product->id}}" class="text-gray-700">Select</a>
+
+    <div>
+        
+
+    </div>
+
+
+   <div class="rounded-full bg-gray-700 hover:bg-blue-700 px-8 mx-auto w-24">  
+   <a href="/product/{{$product->id}}" class="text-center mx-auto text-gray-50">Buy</a>
    </div>
-   <button value="{{$product->id}}" 
+   <!-- <button value="{{$product->id}}" 
       class="bg-yellow-300 hover:bg-blue-700 text-gray-700 p-2 m-2 w-24 rounded-sm select-product">
       SelectJS
-    </button>
+    </button> -->
 </div>
 </div>
 
