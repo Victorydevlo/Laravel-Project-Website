@@ -10,6 +10,9 @@ use App\Http\Controllers\ProductController;
 //     return view('products', ['products' => $products]);
 // });
 
+Route::get('/product/create', [ProductController::class, 'create'])->name('create');
+
+
 Route::get('/', [ProductController::class, 'index'])->name('product');
 Route::get('/product/{id}', [ProductController::class, 'show']);
 
@@ -17,8 +20,8 @@ Route::get('/product/{id}', [ProductController::class, 'show']);
 
 //FORM Creation
 
-Route::get('/product/create', [ProductController::class, 'create']) ->name('cretei');
-Route::get('/product/{id}/edit', [ProductController::class, 'edit']);
+
+Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->name('edit');
 
 // Update and Store Routes
 
