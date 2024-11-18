@@ -1,5 +1,16 @@
 <div>
-<form method="POST" action="/product">  
+<form method="POST" action="/product">
+    @csrf
+
+    @if ($errors->any())
+    <div class="bg-red-600 border-solid rounded-md border-2 border-red-700">
+        <ul>
+    @foreach ($errors->all() as $error)
+         <li class="text-lg text-gray-100">{{ $error }}</li>
+    @endforeach
+        </ul>
+        </div>
+    @endif
     <div class="p-2 m-2 rounded-lg border-2 border-blue-900 max-w-md">
         <div class="text-sm">
             <input name="title" type="text" placeholder="title" value = "{{$product->title ?? ''}}"/>
