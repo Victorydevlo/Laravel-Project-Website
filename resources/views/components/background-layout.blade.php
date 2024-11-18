@@ -5,7 +5,7 @@
         <header>
             @auth
             <div class="flex justify-between items-center">
-            <h1 class="text-lg font-semibold">AWE Component 2</h1>
+            <h1 class="text-center mx-auto text-lg font-semibold">AWE COMPONENT 2</h1>
                 <x-dropdown align="left" width="48">
                     <x-slot name="trigger">
                         <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
@@ -44,7 +44,7 @@
                    
 @else
     <div class="flex justify-between items-center">
-        <h1 class="text-lg font-semibold">AWE Component 2</h1>
+        <h1 class="text-center mx-auto text-lg font-semibold">AWE COMPONENT 2</h1>
         <div style="text-align: right; " class="mx-8">
             <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
             @if (Route::has('register'))
@@ -63,6 +63,12 @@
             margin-top: 5px;
             width: 100%;
         }
+
+        .lines {
+            border-bottom: 2px solid gray;
+            margin-top: 5px;
+            width: 100%;
+        }        
         
         </style>
         <section>            
@@ -74,7 +80,7 @@
         </section>
         <section>
         <div class="line"></div>
-        <div class="line"></div>
+        <div class="lines"></div>
         </section>
 
         <footer>
