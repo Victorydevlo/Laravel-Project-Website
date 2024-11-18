@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
+
 class ProfileController extends Controller
 {
     /**
@@ -56,14 +57,5 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
-    }
-
-    
-    /**
-     * Store the user's profile information.
-     */
-    public function store(StoreProductRequest $request)
-    {
-    return "POST request received and processed successfully";
     }
 }

@@ -23,7 +23,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view("productform");
     }
 
     /**
@@ -31,7 +31,7 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        return "POST request received and processed successfully";
     }
 
     /**
@@ -47,9 +47,9 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit(int $id)
     {
-        //
+        return "SHOW THE PRODUCT FORM FOR PRODUCT ".$id;
     }
 
     /**
@@ -57,7 +57,7 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        return "PUT request received and processed successfully";
     }
 
     /**

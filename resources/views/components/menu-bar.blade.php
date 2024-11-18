@@ -4,7 +4,7 @@
         <a href="{{ route('register') }}" class="text-center mx-auto text-gray-50">Home</a>
     </div>
     <div class="rounded-none bg-gray-700 hover:bg-blue-700 px-6 m-2 w-24">  
-        <a href="{{ route('register') }}" class="text-center mx-auto text-gray-50">About</a>
+        <a href="{{ route('product') }}" class="text-center mx-auto text-gray-50">About</a>
     </div>
     <div class="rounded-none bg-gray-700 hover:bg-blue-700 px-6 m-2 w-24">  
         <a href="{{ route('register') }}" class="text-center mx-auto text-gray-50">About</a>
