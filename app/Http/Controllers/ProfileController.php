@@ -57,4 +57,13 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    
+    /**
+     * Store the user's profile information.
+     */
+    public function store(StoreProductRequest $request)
+    {
+    return "POST request received and processed successfully";
+    }
 }

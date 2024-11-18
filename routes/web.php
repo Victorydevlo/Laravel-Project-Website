@@ -11,10 +11,15 @@ use App\Http\Controllers\ProductController;
 // });
 
 Route::get('/', [ProductController::class, 'index'])->name('product');
-
 Route::get('/product/{id}', [ProductController::class, 'show']);
 
 
+// Update and Store Routes
+
+Route::post('/product', [ProductController::class, 'store'])->name('product.store');
+Route::put('/product/{id}', [ProductController::class, 'update'])->name('product.update');
+
+//Welcome Route
 
 Route::get('/welcome', function () {
     return view('welcome');
