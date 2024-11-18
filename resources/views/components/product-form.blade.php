@@ -9,7 +9,10 @@
         </p>
         <p>
             <input type="number" step='0.01' value='0.00' name="price"  placeholder="price" />
-        </p>   
+        </p>
+        <p>
+            <input type="text" name="product_type"  placeholder="product type" />
+        </p>     
         <div>
             <button type="submit" class="bg-gray-800 text-white mt-2 p-2">Add New</button>
         </div>
