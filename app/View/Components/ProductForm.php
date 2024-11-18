@@ -13,7 +13,7 @@ class ProductForm extends Component
      */
     public function __construct()
     {
-        //
+        $this->product=$product;
     }
 
     /**
