@@ -6,7 +6,7 @@
 
 
     <div>
-        
+
 
     </div>
 
@@ -28,7 +28,7 @@
 .products-container {
   display: flex;
   display: inline-block;
-  gap: 3rem;
+  gap: 9rem;
 }
 
 .product-card {
