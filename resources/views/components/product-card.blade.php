@@ -6,12 +6,17 @@
     <div>
 </div>
 
-
+<!-- <div class="rounded-full bg-gray-700 hover:bg-blue-700 px-1 m-1 w-5">  
+        <a href="/product/{{$product->id}}" class="text-center mx-auto text-gray-50">></a>
+   </div> -->
    <div class="rounded-full bg-gray-700 hover:bg-blue-700 px-8 mx-auto w-24">  
         <a href="/product/{{$product->id}}" class="text-center mx-auto text-gray-50">Buy</a>
    </div>
-   <div class="rounded-full bg-gray-700 hover:bg-blue-700 px-5 mx-auto w-24">  
+   <div class="rounded-full bg-gray-700 hover:bg-blue-700 px- mx-auto w-24 box">  
         <a href="/product/{{$product->id}}" class="text-center mx-auto text-gray-50">Wishlist</a>
+   </div>
+   <div class="rounded-full bg-gray-700 hover:bg-blue-700 px- mx-auto w-24 box">  
+        <a href="/product/{{$product->id}}/edit" class="text-center mx-auto text-gray-50">Edit</a>
    </div>
    <!-- <button value="{{$product->id}}" 
       class="bg-yellow-300 hover:bg-blue-700 text-gray-700 p-2 m-2 w-24 rounded-sm select-product">
@@ -38,5 +43,10 @@
   border-radius: 8px;
   width: 200px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.box {
+    margin-top: 10px;
+    display: flex;
 }
 </style>
