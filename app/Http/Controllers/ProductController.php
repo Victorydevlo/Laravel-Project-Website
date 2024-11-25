@@ -35,12 +35,14 @@ class ProductController extends Controller
         
             $product = new Product();
 
-            $product->name = $request->name;
-            $product->title = $request->title;
-            $product->price = $request->price;
-            $product->product_type = 1;
+            // $product->name = $request->name;
+            // $product->title = $request->title;
+            // $product->price = $request->price;
+            // $product->product_type_id = $request->product_type_id;
     
-            $product->save();
+            // $product->save();
+
+            Product::create($request->except('_token'));
 
             return Redirect::route('product');
     }

@@ -14,13 +14,13 @@
    </div>
    <div  class="align">
         <div>  
-            <a href="/product/{{$product->id}}" class="text-center mx-auto text-gray-50"><img src="components/images/wishlist.png" class="w-12 h-12 mx-auto"></a>
+            <a href="/product/{{$product->id}}" class="text-center mx-auto text-gray-50"><img src="/images/wishlist.png" class="w-6 h-6 mx-auto"></a>
         </div>
         <div>  
-            <a href="/product/{{$product->id}}/edit" class="text-center mx-auto text-gray-50"><img src="components/images/wishlist.png" class="w-12 h-12 mx-auto"></a>
+            <a href="/product/{{$product->id}}/edit" class="text-center mx-auto text-gray-50"><img src="/images/wishlist.png" class="w-6 h-6 mx-auto"></a>
         </div>
         <div>  
-            <a href="/product/{{$product->id}}/delete" class="text-center mx-auto text-gray-50"><img src="components/images/wishlist.png" class="w-12 h-12 mx-auto"></a>
+            <a href="/product/{{$product->id}}/delete" class="text-center mx-auto text-gray-50"><img src="/images/wishlist.png" class="w-6 h-6 mx-auto"></a>
         </div>
    </div>
    <!-- <button value="{{$product->id}}" 

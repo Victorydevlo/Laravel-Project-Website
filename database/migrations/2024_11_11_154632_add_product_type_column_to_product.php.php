@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->int("product_type");
-        });
+            $table->foreignId('product_type_id');
+            $table->foreign('product_type_id')->references('id')->on('product_types')
+               ->onDelete('cascade')->onUpdate('cascade');
+    });
     }
 
     /**
@@ -21,6 +23,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropForeign(['product_type_id']);
+            $table->dropColumn('product_type_id');
+    });
     }
 };
