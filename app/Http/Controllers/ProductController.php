@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ProductController extends Controller
 {
@@ -41,7 +42,7 @@ class ProductController extends Controller
     
             $product->save();
 
-        return "POST request received and processed successfully";
+            return Redirect::route('product');
     }
 
     /**
@@ -74,8 +75,10 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(int $id)
     {
-        //
+        $product = Product::find($id);
+        $product ->delete();
+        return Redirect::route('index');
     }
 }
