@@ -10,7 +10,7 @@
         <a href="/product/{{$product->id}}" class="text-center mx-auto text-gray-50">></a>
    </div> -->
    <div class="rounded-full bg-gray-700 hover:bg-blue-700 px-8 mx-auto w-24">  
-        <a href="/product/{{$product->id}}" class="text-center mx-auto text-gray-50">Buy</a>
+        <a href="/product/{{$product->id}}" class="text-center mx-auto text-gray-50">Select</a>
    </div>
    <div class="rounded-full bg-gray-700 hover:bg-blue-700 px- mx-auto w-24 box">  
         <a href="/product/{{$product->id}}" class="text-center mx-auto text-gray-50">Wishlist</a>
