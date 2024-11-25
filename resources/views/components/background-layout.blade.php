@@ -9,7 +9,7 @@
                 <x-dropdown align="left" width="48">
                     <x-slot name="trigger">
                         <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                            <div>{{ Auth::user()->name }}</div>
+                            <div> {{ Auth::user()->name }}</div>
                             <div class="ml-1">
                     <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -68,11 +68,19 @@
             border-bottom: 2px solid gray;
             margin-top: 5px;
             width: 100%;
-        }        
+        } 
+
+        .shadowlines {
+            border-bottom: 2px solid white;
+            margin-top: 5px;
+            width: 100%;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+        }          
         
         </style>
         <section>            
-        <div class="line"></div>
+        <div class="shadowlines"></div>
 <x-menu-bar />
         <div class="line"></div>
 {{ $slot }}
