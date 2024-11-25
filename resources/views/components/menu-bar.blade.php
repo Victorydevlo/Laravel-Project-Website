@@ -22,6 +22,7 @@
         <a href="{{ route('register') }}" class="text-center mx-auto text-gray-50">About</a>
     </div> 
     
+    
 </div>
 
 

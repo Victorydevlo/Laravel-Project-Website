@@ -12,7 +12,7 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/product/create', [ProductController::class, 'create'])->name('create');
 
-
+Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('delete');
 
 Route::get('/', [ProductController::class, 'index'])->name('product');
 Route::get('/product/{id}', [ProductController::class, 'show']);
