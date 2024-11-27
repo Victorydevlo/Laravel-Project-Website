@@ -1,0 +1,30 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use App\Models\WishList;
+
+class WishSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        $products = [
+            ['name' => 'The Jam', 'title' => 'Modern World','price' => 399, 'product_type_id' => 1],
+            ['name' => 'Amy Winehouse', 'title' => 'Back to Black','price' => 299,'product_type_id' => 1],
+        ];
+        
+        foreach($products as $product) {
+            WishList::create([
+                'name' => $product['name'],
+                'title' => $product['title'],
+                'price' => $product['price'],
+                'product_type_id' => $product['product_type_id']
+            ]);
+        }
+    }
+}

@@ -1,6 +1,6 @@
 <div class="products-container"> 
     <div class="product-card">
-        <img src="/images/pimage/joystick.png" class="w-8 h-8 mx-auto"></a>
+        <img src="/images/pimage/book.png" class="w-8 h-8 mx-auto"></a>
         <p class="text-xl font-semibold text-gray-800 text-center">{{$product->name}}</p>
         <p class="text-base text-center">{{$product->title}}</p>
         <p class="text-sm text-center">£{{$product->price}}</p>
@@ -24,7 +24,7 @@
                 <a href="/product/{{$product->id}}/edit" class="text-center mx-auto text-gray-50"><img src="/images/edit.png" class="w-6 h-6 mx-auto"></a>
             </div>
             <div>  
-                <a href="/product/{{$product->id}}/delete" class="text-center mx-auto text-gray-50"><img src="/images/delete.png" class="w-6 h-6 mx-auto"></a>
+                <a href="/product/{{route('delete', $product->id)}}" class="text-center mx-auto text-gray-50"><img src="/images/delete.png" class="w-6 h-6 mx-auto"></a>
             </div>
             @else
 
@@ -57,7 +57,7 @@
   padding: 1rem;
   background-color: #f8fafc;
   border-radius: 8px;
-  width: 280px;
+  width: 303px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 

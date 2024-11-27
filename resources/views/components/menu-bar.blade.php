@@ -1,6 +1,6 @@
 
 <div class="flex">
-    <div class="rounded-none bg-gray-700 hover:bg-blue-700 px-6 m-2 w-24">  
+    <div class="rounded-none bg-gray-700 hover:bg-blue-700 px-9 m-3 w-26">  
         <a href="{{ route('product') }}" class="text-center mx-auto text-gray-50">Home</a>
     </div>
 
@@ -18,10 +18,15 @@
 
     @endif
 
-    <div class="rounded-none bg-gray-700 hover:bg-blue-700 px-6 m-2 w-24">  
+    <div class="rounded-none bg-gray-700 hover:bg-blue-700 px-6 m-3 w-26">  
         <a href="{{ route('register') }}" class="text-center mx-auto text-gray-50">About</a>
     </div> 
     
+    <div class="px-6 m-3 w-26 flex inline-block">  
+        <a href="" class="text-center mx-auto text-gray-50">
+            <img src="/images/delete.png" class="w-6 h-6">
+        </a>
+    </div> 
     
 </div>
 

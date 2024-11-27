@@ -8,9 +8,9 @@
             <h1 class="text-center mx-auto text-lg font-semibold">AWE COMPONENT 2</h1>
                 <x-dropdown align="left" width="48">
                     <x-slot name="trigger">
-                        <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                            <div> {{ Auth::user()->name }}</div>
-                            <div class="ml-1">
+                        <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out ">
+                            <div > {{ Auth::user()->name }}</div>
+                            <div class="ml-3">
                     <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -45,7 +45,7 @@
 @else
     <div class="flex justify-between items-center">
         <h1 class="text-center mx-auto text-lg font-semibold">AWE COMPONENT 2</h1>
-        <div style="rounded-full bg-gray-700 hover:bg-blue-700 text-align: right; " class="mx-8">
+        <div style="text-align: right; margin-right: 20;">
             <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
             @if (Route::has('register'))
             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
@@ -82,12 +82,12 @@
         <section>            
         <div class="shadowlines"></div>
 <x-menu-bar />
-        <div class="line"></div>
+<div class="lines"></div>        
 {{ $slot }}
         <!-- <p>MAIN CONTENT</p> -->
         </section>
         <section>
-        <div class="line"></div>
+
         <div class="lines"></div>
         </section>
 
