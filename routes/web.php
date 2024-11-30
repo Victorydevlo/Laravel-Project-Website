@@ -10,6 +10,10 @@ use App\Http\Controllers\ProductController;
 //     return view('products', ['products' => $products]);
 // });
 
+Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->middleware('can:can-edit-product')->name('product.edit');
+
+Route::get('/product/create', [ProductController::class, 'create'])->middleware('can:create,App\Models\Product')->name('product.create');
+
 Route::get('/product/create', [ProductController::class, 'create'])->name('create');
 
 Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('delete');

@@ -1,34 +1,22 @@
-
 <div class="flex">
-    <div class="rounded-none bg-gray-700 hover:bg-blue-700 px-9 m-3 w-26">  
-        <a href="{{ route('product') }}" class="text-center mx-auto text-gray-50">Home</a>
+    <!-- Home link -->
+    <div class="rounded-none border border-gray-700 px-6 py-2 m-3 w-26 text-center">  
+        <a href="{{ route('product') }}" class="text-gray-700 hover:text-blue-700 transition duration-300">Home</a>
     </div>
 
-    @if (Auth::check())
-
-        @if(Auth::user()->is_admin==1)
-        <div class="rounded-none bg-gray-700 hover:bg-blue-700 px-6 m-3 w-26">  
-            <a href="{{ route('create') }}" class="text-center mx-auto text-gray-50">Add Product</a>
+    @can('create', App\Models\Product::class)
+        <div class="rounded-none border border-gray-700 px-6 py-2 m-3 w-26 text-center">  
+            <a href="{{ route('create') }}" class="text-gray-700 hover:text-blue-700 transition duration-300">Add Product</a>
         </div>
-        @else
+    @endcan
 
-        @endif
-
-    @else
-
-    @endif
-
-    <div class="rounded-none bg-gray-700 hover:bg-blue-700 px-6 m-3 w-26">  
-        <a href="{{ route('register') }}" class="text-center mx-auto text-gray-50">About</a>
+    <div class="rounded-none border border-gray-700 px-6 py-2 m-3 w-26 text-center">  
+        <a href="{{ route('register') }}" class="text-gray-700 hover:text-blue-700 transition duration-300">About</a>
     </div> 
     
-    <div class="px-6 m-3 w-26 flex inline-block">  
-        <a href="" class="text-center mx-auto text-gray-50">
+    <div class="px-6 py-2 m-3 w-26 flex inline-block text-center">  
+        <a href="" class="text-gray-700 hover:text-blue-700 transition duration-300">
             <img src="/images/delete.png" class="w-6 h-6">
         </a>
     </div> 
-    
 </div>
-
-
-

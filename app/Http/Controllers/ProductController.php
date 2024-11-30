@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
@@ -24,6 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+        Gate::authorize('update');
         return view("productform");
     }
 
@@ -62,6 +64,7 @@ class ProductController extends Controller
      */
     public function edit(int $id)
     {
+        Gate::authorize('can-edit-product');
         $product = Product::find($id);
         return view('productform',['product'=>$product]);
     }
