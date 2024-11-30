@@ -22,8 +22,8 @@
             <input type="number" step='0.01' name="price"  placeholder="price" value="{{($product->price ?? 0)/100}}" />
         </p>
         <select name='product_type_id'>
-            <option value= "{{$product->product_type_id ?? 1}}"> CD </option>
-            <option value= "{{$product->product_type_id ?? 2}}"> Film </option>
+            <option value= "{{$product->product_type_id ?? 1}}"> Book </option>
+            <option value= "{{$product->product_type_id ?? 2}}"> CD </option>
             <option value= "{{$product->product_type_id ?? 3}}"> Games </option>
         </select>     
         <div>

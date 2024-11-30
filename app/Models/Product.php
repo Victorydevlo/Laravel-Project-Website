@@ -10,4 +10,10 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'title', 'price', 'product_type_id'];
+
+    public function productType()
+{
+    return $this->hasOne('App\Models\ProductType','id','product_type_id');
 }
+}
+

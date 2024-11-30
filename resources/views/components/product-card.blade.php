@@ -1,6 +1,7 @@
 <div class="products-container"> 
     <div class="product-card">
         <img src="/images/pimage/book.png" class="w-8 h-8 mx-auto"></a>
+        <div class="rounded-full bg-lime-200 hover:bg-blue-700 px-8 mx-auto w-24">{{$product->productType->type}}</div>
         <p class="text-xl font-semibold text-gray-800 text-center">{{$product->name}}</p>
         <p class="text-base text-center">{{$product->title}}</p>
         <p class="text-sm text-center">£{{$product->price}}</p>
@@ -10,6 +11,7 @@
 <!-- <div class="rounded-full bg-gray-700 hover:bg-blue-700 px-1 m-1 w-5">  
         <a href="/product/{{$product->id}}" class="text-center mx-auto text-gray-50">></a>
    </div> -->
+   
    <div class="rounded-full bg-gray-700 hover:bg-blue-700 px-8 mx-auto w-24">  
         <a href="/product/{{$product->id}}" class="text-center mx-auto text-gray-50">Select</a>
    </div>
