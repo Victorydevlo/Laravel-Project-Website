@@ -27,6 +27,7 @@ class ProductController extends Controller
     {
         Gate::authorize('update');
         return view("productform");
+        
     }
 
     /**
