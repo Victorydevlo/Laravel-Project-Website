@@ -46,7 +46,7 @@ class ProductController extends Controller
     
             // $product->save();
 
-            Product::create($request->except('_token', 'file'));
+            Product::create($request->except('_token', '_method','file'));
 
             return Redirect::route('product');
     }
@@ -74,9 +74,11 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, Product $product)
+    public function updates(UpdateProductRequest $request, Product $product, int $id)
     {
-        return "PUT request received and processed successfully";
+        $product = Product::findOrFail($id);
+        $product->update($request->except('_token', '_method'));
+        return Redirect::route('product');
     }
 
     /**
@@ -91,9 +93,9 @@ class ProductController extends Controller
 
     public function search(Request $request)
 {
-    // $search = $product->input('search');
-    // $results = Product::where('name', 'like', "%$search%")->get();
+    $product = $request->input('search');
+    $results = Product::where('name', 'like', "%$product%")->get();
 
-    // return view('products.index', ['results' => $results]);
+    return view('products', ['results' => $results]);
 }
 }

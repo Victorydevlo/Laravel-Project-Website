@@ -18,7 +18,7 @@
                     </button>
                 </x-slot>
 
-                <x-slot name="content">
+                <x-slot name="content" style='overflow:hidden; width:100%; height:500px; position:relative;'>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         @if(Auth::user()->is_admin == 1)
