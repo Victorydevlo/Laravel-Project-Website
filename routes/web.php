@@ -27,7 +27,7 @@ Route::get('/product/{id}', [ProductController::class, 'show']);
 
 // Update and Store Routes
 
-Route::post('/product', [ProductController::class, 'store'])->name('product.store');
+Route::post('/product', [ProductController::class, 'store'])->middleware('can:create,App\Models\Product')->name('store');
 Route::put('/product/{id}', [ProductController::class, 'updates'])->name('product.update');
 
 //Welcome Route

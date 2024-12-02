@@ -88,14 +88,16 @@
         <div class="shadowlines"></div>
 <x-menu-bar />
 <div class="lines"></div>
+@if(Route::is('product'))
 <div class="navbarstyle">
-<form action="{{ route('register') }}" method="GET">
+<form action="{{ route('create') }}" method="GET">
     <div class="justify-between" style="text-align: right; margin-right: 20px;">
     <input type="text" name="search" placeholder="Search Products">
     <button type="submit" class='rounded-none border border-gray-700 px-6 py-2 m-3 w-26 text-center'>Search</button>
     </div>
 </form>
-</div>        
+</div>
+@endif        
 {{ $slot }}
         <!-- <p>MAIN CONTENT</p> -->
         </section>
