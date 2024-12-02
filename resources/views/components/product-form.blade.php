@@ -36,7 +36,7 @@
                 @if(Route::is('create'))
                     <button type="submit" class="bg-gray-800 text-white mt-2 p-2">Add New</button>
                 @elseif(Route::is('edit'))         
-                    <button type="submit" value="{{$product->id}}" class="bg-gray-800 text-white mt-2 p-2">Update</button>
+                    <button href="{{ route('product') }}"type="submit" value="{{$product->id}}" class="bg-gray-800 text-white mt-2 p-2">Update</button>
                 @endif
             </div>
         </div>

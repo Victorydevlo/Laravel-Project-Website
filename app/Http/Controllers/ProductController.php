@@ -88,7 +88,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $product ->delete();
-        return Redirect::route('index');
+        return Redirect::route('product');
     }
 
     public function search(Request $request)

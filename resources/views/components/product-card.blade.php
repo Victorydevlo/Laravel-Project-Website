@@ -34,15 +34,19 @@
             <div>  
                 <a href="/product/{{$product->id}}/edit" class="text-center mx-auto text-gray-50"><img src="/images/edit.png" class="w-6 h-6 mx-auto"></a>
             </div>
-            <div>  
-                <a href="/product/{{route('delete', $product->id)}}" class="text-center mx-auto text-gray-50"><img src="/images/delete.png" class="w-6 h-6 mx-auto"></a>
-            </div>
+            <div>
+            <form action="{{ route('delete', $product->id) }}" method="POST" class="text-center mx-auto">
+            @csrf
+        @method('DELETE')
+        <button type="submit" class="text-gray-50">
+            <img src="/images/delete.png" class="w-6 h-6 mx-auto">
+        </button>
+    </form>
+
         @endcan
+            </div>
    </div>
-   <!-- <button value="{{$product->id}}" 
-      class="bg-yellow-300 hover:bg-blue-700 text-gray-700 p-2 m-2 w-24 rounded-sm select-product">
-      SelectJS
-    </button> -->
+
 </div>
 </div>
 
