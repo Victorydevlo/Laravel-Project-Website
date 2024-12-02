@@ -1,3 +1,4 @@
+
 <div class="products-container"> 
     <div class="product-card">
         <img src="/images/pimage/book.png" class="w-8 h-8 mx-auto"></a>
@@ -7,6 +8,7 @@
         <p class="text-sm text-center">£{{$product->price}}</p>
     <div>
 </div>
+
 
 <!-- <div class="rounded-full bg-gray-700 hover:bg-blue-700 px-1 m-1 w-5">  
         <a href="/product/{{$product->id}}" class="text-center mx-auto text-gray-50">></a>
@@ -58,6 +60,7 @@
   width: 315px;
   /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
+
 
 .align {
     margin-top: 9;

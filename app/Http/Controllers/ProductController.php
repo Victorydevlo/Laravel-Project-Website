@@ -87,4 +87,12 @@ class ProductController extends Controller
         $product ->delete();
         return Redirect::route('index');
     }
+
+    public function search(Request $request)
+{
+    // $search = $request->input('search');
+    // $results = Product::where('name', 'like', "%$search%")->get();
+
+    // return view('products.index', ['results' => $results]);
+}
 }
