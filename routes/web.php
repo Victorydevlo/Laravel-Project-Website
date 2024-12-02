@@ -7,11 +7,11 @@ use App\Http\Controllers\ProductController;
 
 
 
-Route::get('/product/create', [ProductController::class, 'create'])->middleware('can:create,App\Models\Product')->name('product.create');
+Route::get('/product/create', [ProductController::class, 'create'])->middleware('can:create,App\Models\Product')->name('create');
 
-Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->middleware('can:can-edit-product')->name('product.edit');
+Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->middleware('can:can-edit-product')->name('edit');
 
-Route::get('/product/create', [ProductController::class, 'create'])->name('create');
+// Route::get('/product/create', [ProductController::class, 'create'])->name('create');
 
 Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('delete');
 
@@ -23,7 +23,7 @@ Route::get('/product/{id}', [ProductController::class, 'show']);
 //FORM Creation
 
 
-Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->name('edit');
+// Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->name('edit');
 
 // Update and Store Routes
 

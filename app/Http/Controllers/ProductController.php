@@ -25,7 +25,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        Gate::authorize('update');
+
+        // Gate::authorize('create');
         return view("productform");
         
     }
@@ -45,7 +46,7 @@ class ProductController extends Controller
     
             // $product->save();
 
-            Product::create($request->except('_token'));
+            Product::create($request->except('_token', 'file'));
 
             return Redirect::route('product');
     }
@@ -65,7 +66,7 @@ class ProductController extends Controller
      */
     public function edit(int $id)
     {
-        Gate::authorize('can-edit-product');
+        // Gate::authorize('can-edit-product');
         $product = Product::find($id);
         return view('productform',['product'=>$product]);
     }
@@ -90,7 +91,7 @@ class ProductController extends Controller
 
     public function search(Request $request)
 {
-    // $search = $request->input('search');
+    // $search = $product->input('search');
     // $results = Product::where('name', 'like', "%$search%")->get();
 
     // return view('products.index', ['results' => $results]);

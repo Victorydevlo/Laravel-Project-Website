@@ -39,7 +39,7 @@
         @else
         <div class="flex justify-between items-center">
             <h1 class="text-center mx-auto text-lg font-semibold">AWE COMPONENT 2</h1>
-            <div style="text-align: right; margin-right: 20px;" class=>
+            <div style="text-align: right; margin-right: 20px; margin-top: 8px;" class=>
                 <a href="{{ route('login') }}" class="text-sm text-gray-700 border border-gray-700 px-3 py-1 rounded hover:text-blue-700 hover:border-blue-700 transition duration-300">
                     Login
                 </a>
