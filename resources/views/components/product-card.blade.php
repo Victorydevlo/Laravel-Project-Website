@@ -14,9 +14,15 @@
         <a href="/product/{{$product->id}}" class="text-center mx-auto text-gray-50">></a>
    </div> -->
    
+   @if(Route::is('product'))   
    <div class="rounded-full border border-gray-700 hover:bg-blue-700 px-8 mx-auto w-24">  
         <a href="/product/{{$product->id}}" class="text-center mx-auto text-black-50">Select</a>
    </div>
+   @elseif(Route::is('show'))
+   <div class="rounded-full border border-gray-700 hover:bg-blue-700 px-8 mx-auto w-24">  
+        <a href="" class="text-center mx-auto text-black-50">Buy</a>
+   </div>
+   @endif
    
    
    <div  class="px-14 flex justify-center align">

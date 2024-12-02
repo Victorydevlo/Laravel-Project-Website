@@ -16,7 +16,7 @@ Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->middleware
 Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('delete');
 
 Route::get('/', [ProductController::class, 'index'])->name('product');
-Route::get('/product/{id}', [ProductController::class, 'show']);
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('show');
 
 
 
@@ -27,7 +27,7 @@ Route::get('/product/{id}', [ProductController::class, 'show']);
 
 // Update and Store Routes
 
-Route::post('/product', [ProductController::class, 'store'])->middleware('can:create,App\Models\Product')->name('store');
+Route::post('/product', [ProductController::class, 'store'])->middleware('can:create,App\Models\Product')->name('product.store');
 Route::put('/product/{id}', [ProductController::class, 'updates'])->name('product.update');
 
 //Welcome Route
