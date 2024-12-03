@@ -18,7 +18,7 @@ Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('del
 Route::get('/', [ProductController::class, 'index'])->name('product');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('show');
 
-
+Route::get('/search', 'ProductController@search')->name('search');
 
 //FORM Creation
 
