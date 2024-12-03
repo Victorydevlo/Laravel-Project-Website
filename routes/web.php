@@ -6,11 +6,11 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductTypeController;
 
 
+Route::get('/producttype/create', [ProductTypeController::class, 'create'])->name('createtype');
 
 
 Route::get('/product/create', [ProductController::class, 'create'])->middleware('can:create,App\Models\Product')->name('create');
 
-Route::get('/product/create', [ProductTypeController::class, 'create'])->middleware('can:create,App\Models\Product')->name('create');
 
 Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->middleware('can:can-edit-product')->name('edit');
 
@@ -28,8 +28,8 @@ Route::get('/search', 'ProductController@search')->name('search');
 
 //FORM Creation
 
-Route::get('/producttype/create', [ProductController::class, 'create'])->middleware('can:create,App\Models\Product')->name('ptcreate');
-Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->middleware('can:can-edit-product')->name('ptedit');
+Route::get('/producttype/create', [ProductTypeController::class, 'create'])->middleware('can:create,App\Models\Product')->name('ptcreate');
+Route::get('/producttype/{id}/edit', [ProductTypeController::class, 'edit'])->middleware('can:can-edit-product')->name('ptedit');
 
 
 // Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->name('edit');
@@ -38,6 +38,9 @@ Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->middleware
 
 Route::post('/product', [ProductController::class, 'store'])->middleware('can:create,App\Models\Product')->name('product.store');
 Route::put('/product/{id}', [ProductController::class, 'updates'])->name('product.update');
+
+Route::post('/producttype', [ProductTypeController::class, 'store'])->middleware('can:create,App\Models\Product')->name('producttype.store');
+Route::put('/producttype/{id}', [ProductTypeController::class, 'updates'])->name('producttype.update');
 
 //Welcome Route
 
