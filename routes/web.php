@@ -19,6 +19,8 @@ Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->middleware
 Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('delete');
 
 Route::get('/', [ProductController::class, 'index'])->name('product');
+
+Route::get('/producttype', [ProductTypeController::class, 'index'])->name('producttype');
 // show for product
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('show');
 //show for product type
@@ -39,7 +41,7 @@ Route::get('/producttype/{id}/edit', [ProductTypeController::class, 'edit'])->mi
 Route::post('/product', [ProductController::class, 'store'])->middleware('can:create,App\Models\Product')->name('product.store');
 Route::put('/product/{id}', [ProductController::class, 'updates'])->name('product.update');
 
-Route::post('/producttype', [ProductTypeController::class, 'store'])->middleware('can:create,App\Models\Product')->name('producttype.store');
+Route::post('/producttype', [ProductTypeController::class, 'store'])->name('producttype.store');
 Route::put('/producttype/{id}', [ProductTypeController::class, 'updates'])->name('producttype.update');
 
 //Welcome Route

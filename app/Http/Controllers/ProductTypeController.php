@@ -16,8 +16,8 @@ class ProductTypeController extends Controller
      */
     public function index()
     {
-        $product_types = ProductType::all();
-        return view('product_types',['product_types'=>$product_types]);
+        $productTypes = ProductType::all();
+        return view('producttype',['product_types'=>$productTypes]);
     }
 
     /**

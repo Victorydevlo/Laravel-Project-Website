@@ -1,16 +1,16 @@
 <div>
 
 @if(Route::is('create'))
-        <form method="POST" action="{{route('product.store')}}" >
+        <form method="POST" action="{{route('producttype.store')}}" >
 @elseif(Route::is('edit')) 
-        <form method="POST" action="{{route('product.update', ['id'=>$product->id])}}" >
+        <form method="POST" action="{{route('producttype.update', ['id'=>$product->id])}}" >
         <input type="hidden" name="_method" value="PUT">
 @endif
     @csrf
         <div class="p-2 m-2 rounded-lg border-2 border-blue-900 max-w-md">
         <div class="text-sm flex justify-between items-center gap-4">
-            <p class="product-type" type="text">{{ $producttype->type ?? '' }}</p>
-            <button type="submit" class="bg-gray-800 text-white p-2">Edit</button>
+            {{$slot}}
+        <button type="submit" class="bg-gray-800 text-white p-2">Edit</button>
         </div>
    
             <div>
