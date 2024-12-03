@@ -70,12 +70,7 @@ class ProductController extends Controller
         return view('products',['products'=>$products]);
     }
 
-    public function shows(int $id)
-    {
-        $producttype = ProductType::find($id);
-        $product_types = array($producttype); //this is because product.blade view is expecting an array. This makes it a list of one
-        return view('product_types',['product_types'=>$product_types]);
-    }
+
 
     /**
      * Show the form for editing the specified resource.
