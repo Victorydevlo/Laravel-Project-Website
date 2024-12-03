@@ -16,7 +16,10 @@ Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->middleware
 Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('delete');
 
 Route::get('/', [ProductController::class, 'index'])->name('product');
+// show for product
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('show');
+//show for product type
+Route::get('/producttype/{id}', [ProductController::class, 'shows'])->name('shows');
 
 Route::get('/search', 'ProductController@search')->name('search');
 

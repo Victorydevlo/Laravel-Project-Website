@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
+use App\Models\ProductType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Gate;
@@ -35,7 +36,7 @@ class ProductController extends Controller
     {
 
         // Gate::authorize('create');
-        return view("productform");
+        return view("producttypeform");
         
     }
 
@@ -67,6 +68,13 @@ class ProductController extends Controller
         $product = Product::find($id);
         $products = array($product); //this is because product.blade view is expecting an array. This makes it a list of one
         return view('products',['products'=>$products]);
+    }
+
+    public function shows(int $id)
+    {
+        $producttype = ProductType::find($id);
+        $product_types = array($producttype); //this is because product.blade view is expecting an array. This makes it a list of one
+        return view('product_types',['product_types'=>$product_types]);
     }
 
     /**
