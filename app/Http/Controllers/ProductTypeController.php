@@ -54,7 +54,7 @@ class ProductTypeController extends Controller
     public function edit(int $id)
     {
         // Gate::authorize('can-edit-product');
-        $producttype = Product::find($id);
+        $producttype = ProductType::find($id);
         return view('producttypeform',['producttype'=>$producttype]);
     }
 
