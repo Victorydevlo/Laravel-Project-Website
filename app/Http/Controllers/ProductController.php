@@ -31,6 +31,14 @@ class ProductController extends Controller
         
     }
 
+    public function createproducttype()
+    {
+
+        // Gate::authorize('create');
+        return view("productform");
+        
+    }
+
     /**
      * Store a newly created resource in storage.
      */

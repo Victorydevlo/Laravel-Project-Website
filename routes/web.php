@@ -22,6 +22,9 @@ Route::get('/search', 'ProductController@search')->name('search');
 
 //FORM Creation
 
+Route::get('/producttype/create', [ProductController::class, 'create'])->middleware('can:create,App\Models\Product')->name('ptcreate');
+Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->middleware('can:can-edit-product')->name('ptedit');
+
 
 // Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->name('edit');
 
