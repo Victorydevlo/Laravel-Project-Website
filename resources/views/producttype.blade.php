@@ -1,8 +1,9 @@
 <x-background-layout>
     <div class="###some tailwindcss style rules###">
     <ul>
-        @forelse ($product_types as $product)
-            <li>{{ $product->type }}</li>
+        @forelse ($product_types as $product_type)
+            <li>{{ $product_type->type }}</li>
+            <x-producttype-form :product_type="$producttype" />
         @empty
             <li>No product types available.</li>
         @endforelse
