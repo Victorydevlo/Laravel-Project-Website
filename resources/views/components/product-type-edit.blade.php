@@ -10,7 +10,7 @@
                        class="w-full p-2 border rounded-lg" required>
             </div>
             <div class="rounded-none border bg-gray-900 px-6 py-2 m-3 w-26 text-center">
-            <button type="submit" class=" text-white px-4 py-2">
+            <button href="{{ route('producttype') }}"type="submit" class=" text-white px-4 py-2">
                 Update Type
             </button>            
             </div>

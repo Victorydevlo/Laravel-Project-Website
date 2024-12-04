@@ -3,6 +3,7 @@
         <h1 class="text-2xl font-bold mb-4">Add Product Type</h1>
         <form method="POST" action="{{ route('ptstore') }}">
             @csrf
+            @method('POST')
             <div class="mb-4">
                 <label for="type" class="block text-lg font-semibold">Product Type:</label>
                 <input type="text" name="type" id="type" class="w-full p-2 border rounded-lg" placeholder="Enter product type" required>

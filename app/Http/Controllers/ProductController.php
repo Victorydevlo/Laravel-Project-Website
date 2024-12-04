@@ -48,7 +48,6 @@ class ProductController extends Controller
             // $product->save();
 
             Product::create($request->except('_token', '_method','file'));
-
             return Redirect::route('product');
     }
 

@@ -37,16 +37,7 @@ class ProductTypeController extends Controller
      */
     public function store(StoreProductRequest $request)  
     {
-                
         $product_type = new ProductType();
-
-        // $product->name = $request->name;
-        // $product->title = $request->title;
-        // $product->price = $request->price;
-        // $product->product_type_id = $request->product_type_id;
-
-        // $product->save();
-
         ProductType::create($request->except('_token', '_method'));
         return Redirect::route('producttype');
     }
