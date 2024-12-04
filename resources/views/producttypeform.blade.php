@@ -1,3 +1,3 @@
 <x-background-layout>
-    <x-producttype-form :productType="$productType ?? null" />
+    <x-product-type-form :producttype="$producttype ?? null" />
 </x-background-layout>

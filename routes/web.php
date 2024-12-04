@@ -6,7 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductTypeController;
 
 //product Type create do not delete
-Route::get('/producttype/create', [ProductTypeController::class, 'create'])->name('createtype');
+// Route::get('/producttype/create', [ProductTypeController::class, 'create'])->name('createtype');
 
 //Product Create
 Route::get('/product/create', [ProductController::class, 'create'])->middleware('can:create,App\Models\Product')->name('create');
@@ -21,7 +21,7 @@ Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('del
 Route::get('/', [ProductController::class, 'index'])->name('product');
 
 //ProductType Home Page
-Route::get('/producttype/create', [ProductTypeController::class, 'index'])->name('producttype');
+Route::get('/producttype', [ProductTypeController::class, 'index'])->name('producttype');
 
 // show for product
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('show');
@@ -34,7 +34,7 @@ Route::get('/search', 'ProductController@search')->name('search');
 
 //FORM Creation
 //Product Type Creation
-Route::get('/producttype/create', [ProductTypeController::class, 'create'])->middleware('can:create,App\Models\Product')->name('ptcreate');
+// Route::get('/producttype/create', [ProductTypeController::class, 'create'])->middleware('can:create,App\Models\Product')->name('ptcreate');
 
 //Product Type Edit
 Route::get('/producttype/{id}/edit', [ProductTypeController::class, 'edit'])->middleware('can:can-edit-product')->name('ptedit');

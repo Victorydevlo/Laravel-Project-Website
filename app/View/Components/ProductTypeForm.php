@@ -8,12 +8,12 @@ use Illuminate\View\Component;
 
 class ProductTypeForm extends Component
 {
-    public $productType;
+    public $producttype;
 
     
-    public function __construct($productType)
+    public function __construct($producttype)
     {
-        $this->productType = $productType;
+        $this->producttype = $producttype;
     }
 
     /**
@@ -21,6 +21,6 @@ class ProductTypeForm extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.producttype-form');
+        return view('components.product-type-form');
     }
 }
