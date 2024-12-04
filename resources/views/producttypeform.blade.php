@@ -1,6 +1,6 @@
 <x-background-layout>
     <div class="p-2 m-2 rounded-lg border-2 border-blue-900 max-w-md"> 
-    <p>HI</p>
+    <h1 class="text-2xl font-bold mb-4 text-center">Edit Product Type</h1>
         @forelse ($product_types as $product_type)
             <x-product-type :producttype="$product_type" />
         @empty
