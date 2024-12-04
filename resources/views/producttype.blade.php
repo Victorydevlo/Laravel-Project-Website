@@ -6,7 +6,15 @@
         @empty
             <li>No product types available.</li>
         @endforelse
-
+        <div class="container">
         <button type="submit" class="bg-gray-800 text-white p-2">Add New</button>
+        </div>
     </div> 
 </x-background-layout>
+
+<style>
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
