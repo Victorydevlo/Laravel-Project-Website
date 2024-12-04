@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use App\Models\ProductType;
+use Illuminate\Support\Facades\Redirect;
 
 
 class ProductTypeController extends Controller
@@ -27,7 +28,7 @@ class ProductTypeController extends Controller
     {
 
         // Gate::authorize('create');
-        return view("producttypeform");
+        return view("components.product-type-add");
         
     }
 
@@ -36,7 +37,18 @@ class ProductTypeController extends Controller
      */
     public function store(StoreProductRequest $request)  
     {
-        //
+                
+        $product_type = new ProductType();
+
+        // $product->name = $request->name;
+        // $product->title = $request->title;
+        // $product->price = $request->price;
+        // $product->product_type_id = $request->product_type_id;
+
+        // $product->save();
+
+        ProductType::create($request->except('_token', '_method'));
+        return Redirect::route('producttype');
     }
 
     /**
@@ -56,15 +68,17 @@ class ProductTypeController extends Controller
     {
         // Gate::authorize('can-edit-product');
         $producttype = ProductType::find($id);
-        return view('producttypeform',['producttype'=>$producttype]);
+        return view('components.product-type-edit',['producttype'=>$producttype]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function updates(UpdateProductRequest $request, Product $product, int $id)
+    public function updates(UpdateProductRequest $request, ProductType $producttype, int $id)
     {
-        //
+        $producttype = ProductType::findOrFail($id);
+        $producttype->update($request->except('_token', '_method'));
+        return Redirect::route('producttype');
     }
 
     /**

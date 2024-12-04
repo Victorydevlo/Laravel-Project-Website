@@ -11,8 +11,15 @@ use App\Http\Controllers\ProductTypeController;
 //Product Create
 Route::get('/product/create', [ProductController::class, 'create'])->middleware('can:create,App\Models\Product')->name('create');
 
+
+//Product Type Create
+Route::get('/producttype/create', [ProductTypeController::class, 'create'])->name('createtp');
+
 //Product Edit
 Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->middleware('can:can-edit-product')->name('edit');
+
+//Product Type Edit
+Route::get('/producttype/{id}/edit', [ProductTypeController::class, 'edit'])->name('edittp');
 
 //Product Delete
 Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('delete');
@@ -27,7 +34,7 @@ Route::get('/producttype', [ProductTypeController::class, 'index'])->name('produ
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('show');
 
 //show for product type
-Route::get('/producttype/{id}', [ProductController::class, 'shows'])->name('shows');
+
 
 //SEARCH
 Route::get('/search', 'ProductController@search')->name('search');
@@ -36,10 +43,6 @@ Route::get('/search', 'ProductController@search')->name('search');
 //Product Type Creation
 // Route::get('/producttype/create', [ProductTypeController::class, 'create'])->middleware('can:create,App\Models\Product')->name('ptcreate');
 
-//Product Type Edit
-Route::get('/producttype/{id}/edit', [ProductTypeController::class, 'edit'])->middleware('can:can-edit-product')->name('ptedit');
-
-
 // Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->name('edit');
 
 // Update and Store Routes
@@ -47,8 +50,8 @@ Route::get('/producttype/{id}/edit', [ProductTypeController::class, 'edit'])->mi
 Route::post('/product', [ProductController::class, 'store'])->middleware('can:create,App\Models\Product')->name('product.store');
 Route::put('/product/{id}', [ProductController::class, 'updates'])->name('product.update');
 
-Route::post('/producttype', [ProductTypeController::class, 'store'])->name('producttype.store');
-Route::put('/producttype/{id}', [ProductTypeController::class, 'updates'])->name('producttype.update');
+Route::post('/producttype', [ProductTypeController::class, 'store'])->name('ptstore');
+Route::put('/producttype/{id}', [ProductTypeController::class, 'updates'])->middleware('can:can-edit-product')->name('producttype.update');
 
 //Welcome Route
 
