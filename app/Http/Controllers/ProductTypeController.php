@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\StoreProductTypeRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use App\Models\ProductType;
@@ -35,7 +35,7 @@ class ProductTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProductRequest $request)  
+    public function store(StoreProductTypeRequest $request)  
     {
         $product_type = new ProductType();
         ProductType::create($request->except('_token', '_method'));
