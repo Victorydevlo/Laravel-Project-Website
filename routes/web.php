@@ -49,6 +49,7 @@ Route::get('/product/{id}', [ProductController::class, 'show'])->name('show');
 Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 
+
 // Update and Store Routes
 Route::post('/product', [ProductController::class, 'store'])->middleware('can:create,App\Models\Product')->name('product.store');
 Route::put('/product/{id}', [ProductController::class, 'updates'])->name('product.update');
