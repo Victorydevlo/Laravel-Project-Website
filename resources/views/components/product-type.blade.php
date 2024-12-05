@@ -10,12 +10,17 @@
         </div>
     @endif
     <div class='flex next'>
-    <div class="rounded-none border bg-gray-900 px-6 py-2 m-3 w-26 text-center">  
+        <div class="rounded-none border bg-gray-900 px-6 py-2 m-3 w-26 h-10 text-center">  
             <a href="/producttype/{{$producttype->id}}/edit" class="text-stone-50 hover:text-stone-50 transition duration-300">Edit</a>
         </div>
-        <div class="rounded-none border bg-gray-900 px-6 py-2 m-3 w-26 text-center">  
-            <a href="" class="text-stone-50 hover:text-stone-50 transition duration-300">Delete</a>
-        </div>
+          
+            <form action="{{ route('ptdelete', $producttype->id) }}" method="POST">
+                    @csrf
+                @method('DELETE')
+                <div class="rounded-none border bg-red-600 px-6 py-2 m-3 w-26 text-center">
+                    <a href="" class="text-stone-50 hover:text-stone-50 transition duration-300">Delete</a>
+                    </div>
+            </form>
     </div>
         
 </div>

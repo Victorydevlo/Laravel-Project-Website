@@ -46,7 +46,7 @@ Route::get('/product/{id}', [ProductController::class, 'show'])->name('show');
 
 
 //SEARCH
-Route::get('/search', 'ProductController@search')->name('search');
+Route::get('/search', [ProductController::class, 'search'])->name('search');
 
 
 // Update and Store Routes

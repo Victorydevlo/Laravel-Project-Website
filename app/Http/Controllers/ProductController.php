@@ -19,6 +19,8 @@ class ProductController extends Controller
     {
         $products = Product::all();
         return view('products',['products'=>$products]);
+
+
     }
 
     /**
@@ -95,9 +97,11 @@ class ProductController extends Controller
 
     public function search(Request $request)
 {
-    $product = $request->input('search');
-    $results = Product::where('name', 'like', "%$product%")->get();
 
-    return view('products', ['results' => $results]);
+    $search = $request->input('search');
+
+    $products = Product::where('name', 'LIKE', '%' . $search . '%')->get();
+
+    return view('products', ['products' => $products]);
 }
 }

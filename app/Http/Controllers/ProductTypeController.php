@@ -77,8 +77,9 @@ class ProductTypeController extends Controller
      */
     public function destroy(int $id)
     {
-
-        //
+        $producttype = ProductType::find($id);
+        $producttype ->delete();
+        return Redirect::route('producttype');
     }
 
     public function search(Request $request)
