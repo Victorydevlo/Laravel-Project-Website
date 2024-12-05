@@ -20,7 +20,7 @@
     
     <div class="px-6 py-2 m-3 w-26 flex inline-block text-center">  
         <a href="" class="text-gray-700 hover:text-blue-700 transition duration-300">
-            <img src="/images/delete.png" class="w-6 h-6">
+            <img src="/images/a.png" class="w-6 h-6">
         </a>
     </div> 
 </div>
