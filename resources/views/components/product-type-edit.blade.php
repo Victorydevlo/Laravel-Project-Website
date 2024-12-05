@@ -3,7 +3,7 @@
         <h1 class="text-2xl font-bold mb-4">Edit Product Type</h1>
         <form method="POST" action="{{ route('producttype.update', ['id' => $producttype->id]) }}">
             @csrf
-            @method('PUT')
+            <input type="hidden" name="_method" value="PUT">
             <div class="mb-4">
                 <label for="type" class="block text-lg font-semibold">Product Type:</label>
                 <input type="text" name="type" id="type" value="{{ $producttype->type }}" 
