@@ -33,6 +33,8 @@ Route::delete('/producttype/{id}', [ProductTypeController::class, 'destroy'])->n
 //Product Home Page
 Route::get('/', [ProductController::class, 'index'])->name('product');
 
+Route::get('/products', [ProductController::class, 'index2'])->name('productpage');
+
 
 //ProductType Home Page
 Route::get('/producttype', [ProductTypeController::class, 'index'])->name('producttype');

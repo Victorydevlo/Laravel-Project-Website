@@ -5,7 +5,7 @@
     </div>
 
     <div class="rounded-none border border-gray-700 px-6 py-2 m-3 w-26 text-center">  
-        <a href="{{ route('product') }}" class="text-gray-700 hover:text-blue-700 transition duration-300">Products</a>
+        <a href="{{ route('productpage') }}" class="text-gray-700 hover:text-blue-700 transition duration-300">Products</a>
     </div>
 
     @can('create', App\Models\Product::class)

@@ -23,6 +23,14 @@ class ProductController extends Controller
 
     }
 
+    public function index2()
+    {
+        $products = Product::all();
+        return view('productspage',['products'=>$products]);
+
+
+    }
+
     /**
      * Show the form for creating a new resource.
      */
