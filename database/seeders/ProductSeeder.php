@@ -23,7 +23,8 @@ class ProductSeeder extends Seeder
                 'name' => $product['name'],
                 'title' => $product['title'],
                 'price' => $product['price'],
-                'product_type_id' => $product['product_type_id']
+                'product_type_id' => $product['product_type_id'],
+                'product_image' => $product['product_image']
             ]);
         }
     }

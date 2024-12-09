@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::all()->random()->limit(3)->get();
         return view('products',['products'=>$products]);
 
 
