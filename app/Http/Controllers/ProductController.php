@@ -57,9 +57,6 @@ class ProductController extends Controller
                 $product->product_image=str_replace('images/', '', $product_image);
                 $product->save();
             }
-            elseif($request->file('file')==null){
-                echo 'Ni';
-            }
             return Redirect::route('product');
     }
 
