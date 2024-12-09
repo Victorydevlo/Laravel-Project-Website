@@ -1,7 +1,15 @@
 
 <div class="products-container"> 
     <div class="product-card">
-        <img src="/images/pimage/book.png" class="w-8 h-8 mx-auto"></a>
+    <div class="badgesize">
+     @if($product['product_image'] == 'A')
+        <a><img src="/images/pimage/book.png" class="w-8 h-8 mx-auto"></a>
+     @elseif($product['product_image'] == 'B')
+        <a><img src="/images/pimage/cd.png" class="w-8 h-8 mx-auto"></a>
+     @elseif($product['product_image'] == 'C')
+        <a><img src="/images/pimage/joystick.png" class="w-8 h-8 mx-auto"></a>
+    @endif
+    </div>
         <div class="rounded-full bg-lime-200 px-8 mx-auto w-24">{{$product->productType->type ?? null}}</div>
         <p class="text-xl font-semibold text-gray-800 text-center">{{$product->name}}</p>
         <p class="text-base text-center">{{$product->title}}</p>
