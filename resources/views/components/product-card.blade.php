@@ -9,7 +9,7 @@
      @elseif($product['product_image'] == 'C')
         <a><img src="/images/pimage/joystick.png" class="w-8 h-8 mx-auto"></a>
      @else
-     <img class="w-8 h-8 mx-auto" scr="{{asset('storage/images/'.$product->product_image)}}" alt="product">
+     <img class="w-8 h-8 mx-auto" src="{{asset('storage/images/'.$product->product_image)}}" alt="product">
     @endif
     
         <div class="rounded-full bg-lime-200 px-8 mx-auto w-24">{{$product->productType->type ?? null}}</div>
