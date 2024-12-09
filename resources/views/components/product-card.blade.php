@@ -12,7 +12,7 @@
      <img class="w-8 h-8 mx-auto" src="{{asset('storage/images/'.$product->product_image)}}" alt="product">
     @endif
     
-        <div class="rounded-full bg-lime-200 px-8 mx-auto w-24">{{$product->productType->type ?? null}}</div>
+        <div class="rounded-full bg-lime-200 px-8 mx-auto w-24 text-center">{{$product->productType->type ?? null}}</div>
         <p class="text-xl font-semibold text-gray-800 text-center">{{$product->name}}</p>
         <p class="text-base text-center">{{$product->title}}</p>
         <p class="text-sm text-center">£{{$product->price}}</p>

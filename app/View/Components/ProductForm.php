@@ -9,11 +9,13 @@ use Illuminate\View\Component;
 class ProductForm extends Component
 {
 
-    public $product; 
+    public $product;
+    public $producttypes; 
 
-    public function __construct($product)
+    public function __construct($product, $producttypes)
     {
         $this->product=$product;
+        $this->producttypes=$producttypes;
     }
 
     /**

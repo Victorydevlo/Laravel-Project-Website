@@ -28,10 +28,21 @@
                 <input type="number" step='0.01' name="price"  placeholder="price" value="{{($product->price ?? 0)}}" />
             </p>
             <select name='product_type_id'>
+            @foreach ($producttypes as $producttype)
+            <option value= "{{$producttype -> id}}"> {{$producttype->type}} </option>
+            @endforeach
+            </select>
+            
+            
+
+
+            
+            </select>  
+            <!-- <select name='product_type_id'>
                 <option value= "{{$product->product_type_id ?? 1}}"> Book </option>
                 <option value= "{{$product->product_type_id ?? 2}}"> CD </option>
                 <option value= "{{$product->product_type_id ?? 3}}"> Games </option>
-            </select>  
+            </select>   -->
             <div class='formupload'>                
                 <input type="file" name="file" id="file">
             </div>

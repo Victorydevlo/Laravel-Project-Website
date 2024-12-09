@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all()->random()->limit(3)->get();
+        $products = Product::all()->random()->limit(6)->get();
         return view('products',['products'=>$products]);
 
 
@@ -36,9 +36,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-
+        $producttype = ProductType::all();        
         // Gate::authorize('create');
-        return view("productform");
+        return view("productform", ['producttypes'=>$producttype]);
         
     }
 
