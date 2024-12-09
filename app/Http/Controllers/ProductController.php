@@ -47,17 +47,19 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)  
     {
-        
-            $product = new Product();
 
-            // $product->name = $request->name;
-            // $product->title = $request->title;
-            // $product->price = $request->price;
-            // $product->product_type_id = $request->product_type_id;
-    
-            // $product->save();
+            $product = Product::create($request->except('_token', '_method', 'file'));
 
-            Product::create($request->except('_token', '_method','file'));
+            $product = $product->fresh();
+
+            if($request->file('file')!=null){
+                $product_image = $request->file('file')->store('images', 'public');
+                $product->product_image=str_replace('images/', '', $product_image);
+                $product->save();
+            }
+            elseif($request->file('file')==null){
+                echo 'Ni';
+            }
             return Redirect::route('product');
     }
 

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->char('product_image');
+            $table->char('product_image')->default('no_image.png');
     });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            Schema::dropIfExists('products');
+            Schema::dropIfExists('product_image');
     });
     }
 };

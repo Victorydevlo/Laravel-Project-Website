@@ -1,7 +1,7 @@
 <div>
 
 @if(Route::is('create'))
-        <form method="POST" action="{{route('product.store')}}" >
+        <form method="POST" action="{{route('product.store')}}" enctype="multipart/form-data">
 @elseif(Route::is('edit')) 
         <form method="POST" action="{{route('product.update', ['id'=>$product->id])}}" >
         <input type="hidden" name="_method" value="PUT">
@@ -31,7 +31,10 @@
                 <option value= "{{$product->product_type_id ?? 1}}"> Book </option>
                 <option value= "{{$product->product_type_id ?? 2}}"> CD </option>
                 <option value= "{{$product->product_type_id ?? 3}}"> Games </option>
-            </select>     
+            </select>  
+            <div class='formupload'>                
+                <input type="file" name="file" id="file">
+            </div>
             <div>
                 @if(Route::is('create'))
                     <button type="submit" class="bg-gray-800 text-white mt-2 p-2">Add New</button>

@@ -5,5 +5,7 @@
     @empty
         <p>No Products</p>
     @endforelse
-    </div> 
+    </div>
+    
+
 </x-background-layout>
