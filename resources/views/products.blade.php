@@ -1,5 +1,5 @@
 <x-background-layout>
-    <div class="###some tailwindcss style rules###">
+    <div class="flex">
     @forelse ($products as $product)
         <x-product-card :product="$product" />  
     @empty

@@ -5,7 +5,7 @@
     <header>
         @auth
         <div class="flex justify-between items-center">
-            <h1 class="text-center mx-auto text-lg font-semibold">AWE COMPONENT 2</h1>
+            <h1 class="text-center mx-auto text-lg font-semibold">INTEL SHOP</h1>
             <x-dropdown align="left" width="48">
                 <x-slot name="trigger">
                     <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out ">
@@ -38,7 +38,7 @@
 
         @else
         <div class="flex justify-between items-center">
-            <h1 class="text-center mx-auto text-lg font-semibold">AWE COMPONENT 2</h1>
+            <h1 class="text-center mx-auto text-lg font-semibold">INTEL SHOP</h1>
             <div style="text-align: right; margin-right: 20px; margin-top: 8px;" class=>
                 <a href="{{ route('login') }}" class="text-sm text-gray-700 border border-gray-700 px-3 py-1 rounded hover:text-blue-700 hover:border-blue-700 transition duration-300">
                     Login
@@ -84,10 +84,17 @@
 <div class="shadowlines"></div>
 <x-menu-bar />
 <div class="lines"></div>
-@if(Route::is('product'))
+
+@if(Route::is('productpage'))
 <div class="navbarstyle">
 <form action="{{ route('search') }}" method="GET">
-
+        
+    <div class="justify-between" style="text-align: right; margin-right: 20px;">
+    <input type="text" name="search" placeholder="Search Products">
+    <button type="submit" class='rounded-none border border-gray-700 px-6 py-2 m-3 w-26 text-center'>Search</button>
+    </div>
+</form>
+</div>
 @endif
 
 

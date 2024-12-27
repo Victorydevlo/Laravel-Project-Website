@@ -44,7 +44,7 @@
                 <option value= "{{$product->product_type_id ?? 3}}"> Games </option>
             </select>   -->
             <div class='formupload'>                
-                <input type="file" name="file" id="file">
+                <input type="file" name="file" id="file" value="{{$product->product_image ?? ''}}">
             </div>
             <div>
                 @if(Route::is('create'))

@@ -67,7 +67,7 @@
 .products-container {
   display: flex;
   display: inline-block;
-  gap: 9rem;
+  gap: 7rem;
   margin-top: 5;
 }
 
