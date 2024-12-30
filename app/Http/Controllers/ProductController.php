@@ -20,7 +20,12 @@ class ProductController extends Controller
         $products = Product::all()->random()->limit(6)->get();
 
         $productrandomcd = Product::where("product_type_id", 2)->get();
-        return view('products',['products'=>$products , 'productrandomcd'=>$productrandomcd]);
+
+        $productrandomgame = Product::where("product_type_id", 3)->get();
+
+        $productrandombook = Product::where("product_type_id", 1)->get();
+
+        return view('products',['products'=>$products , 'productrandomcd'=>$productrandomcd, 'productrandombook'=>$productrandombook, 'productrandomgame'=>$productrandomgame]);
 
 
     }
