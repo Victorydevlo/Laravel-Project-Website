@@ -108,6 +108,7 @@
 
 <div class="lines"></div>
 {{ $slot }}
+
         <!-- <p>MAIN CONTENT</p> -->
         </section>
         <section>
