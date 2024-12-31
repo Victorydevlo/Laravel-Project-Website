@@ -134,4 +134,12 @@ class ProductController extends Controller
     return view('products', ['products' => $products]);
 
 }
+
+public function wishlist(Request $request)
+{
+    $products = Product::all();    
+
+    return view('wishlist', ['products' => $products]);
+
+}
 }

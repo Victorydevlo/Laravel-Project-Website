@@ -46,7 +46,9 @@ Route::get('/product/{id}', [ProductController::class, 'show'])->name('show');
 Route::get('/products/{id}', [ProductController::class, 'showed'])->name('showed');
 
 
-//show for product type
+Route::get('/wishlist', [ProductController::class, 'wishlist'])->name('wishlist');
+
+
 
 
 //SEARCH

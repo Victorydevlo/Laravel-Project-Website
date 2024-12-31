@@ -18,7 +18,7 @@
         <div class="rounded-full border border-gray-700 hover:bg-blue-700 px-8 mx-auto w-24">  
             <a href="/products/{{$product->id}}" class="text-center mx-auto text-black-50">Select</a>
         </div>
-        @elseif(Route::is('show'))
+        @elseif(Route::is('showed'))
         <div class="rounded-full border border-gray-700 hover:bg-blue-700 px-8 mx-auto w-24">  
             <a href="" class="text-center mx-auto text-black-50">Buy</a>
         </div>
