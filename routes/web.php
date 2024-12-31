@@ -43,6 +43,8 @@ Route::get('/producttype', [ProductTypeController::class, 'index'])->name('produ
 // show for product
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('show');
 
+Route::get('/products/{id}', [ProductController::class, 'showed'])->name('showed');
+
 
 //show for product type
 

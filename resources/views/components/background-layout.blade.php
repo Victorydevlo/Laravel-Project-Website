@@ -59,11 +59,7 @@
         </header>
 
         <style>
-        .line {
-            border-bottom: 2px solid blue;
-            margin-top: 5px;
-            width: 100%;
-        }
+
 
         .lines {
             border-bottom: 2px solid gray;
@@ -84,7 +80,7 @@
         }          
         
         </style>
-        <section>            
+                    
         <div class="shadowlines"></div>
 <x-menu-bar />
 <div class="lines"></div>
@@ -100,17 +96,9 @@
 </div>
 @endif
 
-<div class="flex justify-end mr-5">
-    <div class="rounded-none border border-gray-700 text-center inline-block">
-        <a href="/producttype" class="px-4 py-2 block">More</a>
-    </div>
-</div>
-
-<div class="lines"></div>
-{{ $slot }}
-
-        <!-- <p>MAIN CONTENT</p> -->
-        </section>
+<section>
+        </section>        
+        {{ $slot }}
         <section>
 
         <div class="lines"></div>
@@ -120,24 +108,5 @@
             <p class="text-right">Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})</p>
         </footer>
     </body>
+    
 </html>
-
-<style>
-.container {
-  display: flex;
-  display: inline-block;
-  gap: 9rem;
-  margin-top: 5;
-}
-
-.product-card {
-
-border: 1px solid #e2e8f0; 
-padding: 1rem;
-/* background-color: #f8fafc; */
-border-radius: 8px;
-width: 303px;
-/* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
-}
-
-</style>

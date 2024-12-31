@@ -17,13 +17,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all()->random()->limit(6)->get();
+        $products = Product::all()->random()->limit(5)->get();
 
-        $productrandomcd = Product::where("product_type_id", 2)->get();
+        $productrandomcd = Product::where("product_type_id", 2)->limit(5)->get();
 
-        $productrandomgame = Product::where("product_type_id", 3)->get();
+        $productrandomgame = Product::where("product_type_id", 3)->limit(5)->get();
 
-        $productrandombook = Product::where("product_type_id", 1)->get();
+        $productrandombook = Product::where("product_type_id", 1)->limit(5)->get();
 
         return view('products',['products'=>$products , 'productrandomcd'=>$productrandomcd, 'productrandombook'=>$productrandombook, 'productrandomgame'=>$productrandomgame]);
 
@@ -75,6 +75,20 @@ class ProductController extends Controller
         $product = Product::find($id);
         $products = array($product); //this is because product.blade view is expecting an array. This makes it a list of one
         return view('products',['products'=>$products]);
+    }
+
+    public function showed(int $id)
+    {
+        $product = Product::find($id);
+        $products = array($product); //this is because product.blade view is expecting an array. This makes it a list of one
+
+        $productrandomcd = Product::where("product_type_id", 2);
+
+        $productrandomgame = Product::where("product_type_id", 3);
+
+        $productrandombook = Product::where("product_type_id", 1);
+
+        return view('buy_product',['products'=>$products, 'productrandomcd'=>$productrandomcd, 'productrandombook'=>$productrandombook, 'productrandomgame'=>$productrandomgame]);
     }
 
 

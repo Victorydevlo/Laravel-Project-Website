@@ -142,22 +142,3 @@
 </body>
 </html>
 
-<style>
-.container {
-display: flex;
-display: inline-block;
-gap: 9rem;
-margin-top: 5;
-}
-
-.product-card {
-
-border: 1px solid #e2e8f0; 
-padding: 1rem;
-/* background-color: #f8fafc; */
-border-radius: 8px;
-width: 303px;
-/* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
-}
-
-</style>
