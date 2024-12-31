@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('title');
             $table->integer('price');
+            $table->integer('product_type_id');
+            $table->string('product_image');
         });
     }
 
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_types');
+        Schema::dropIfExists('wish_list');
     }
 };

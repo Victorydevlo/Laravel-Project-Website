@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use App\Models\ProductType;
+use App\Models\WishList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Gate;
@@ -137,8 +138,7 @@ class ProductController extends Controller
 
 public function wishlist(Request $request)
 {
-    $products = Product::all();    
-
+    $products = WishList::all();
     return view('wishlist', ['products' => $products]);
 
 }
