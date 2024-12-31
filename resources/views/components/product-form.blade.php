@@ -46,6 +46,9 @@
             <div class='formupload'>                
                 <input type="file" name="file" id="file" value="{{$product->product_image ?? ''}}">
             </div>
+            <p>
+                <input type="number" step='1' name="stock_quantity"  placeholder="stock_quantity" value="{{($product->stock_quantity ?? 0)}}" />
+            </p>            
             <div>
                 @if(Route::is('create'))
                     <button type="submit" class="bg-gray-800 text-white mt-2 p-2">Add New</button>

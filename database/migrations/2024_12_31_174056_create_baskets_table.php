@@ -17,14 +17,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('basket_items', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('basket_id')->constrained()->onDelete('cascade');
-            $table->foreignId('product_id')->constrained();
-            $table->integer('quantity');
-            $table->decimal('price');
-            $table->timestamps();
-        });
     }
 
     /**

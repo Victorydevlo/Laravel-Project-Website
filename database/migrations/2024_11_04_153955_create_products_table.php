@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('title');
             $table->integer('price');
+            $table->integer('stock_quantity');
             // $table->string('product_type');            
         });
     }

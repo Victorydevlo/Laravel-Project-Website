@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Basket;
+use App\Models\BasketItem;
+use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+
 
 class BasketController extends Controller
 {
@@ -11,7 +17,10 @@ class BasketController extends Controller
      */
     public function index()
     {
-        //
+        $basket = Auth::user()->basket;
+        $items = $basket ? $basket->items : [];
+
+        return view('basket', ['basket'=>$basket]);
     }
 
     /**
@@ -62,6 +71,37 @@ class BasketController extends Controller
     public function destroy(int $id)
     {
         //
+    }
+
+    public function add(Request $request)
+    {
+    $product = Product::findOrFail($request->input('id'));
+    $quantity = $request->input('quantity', 1);
+    if ($product->stock_quantity < $quantity) {
+        return redirect()->route('products')->withErrors(['quantity' => 'Out of stock']);
+    }
+
+    $basket = auth()->user()->basket ?? Basket::create(['user_id' => auth()->id()]);
+    $item = $basket->items()->where('product_id', $product->id)->first();
+
+    if ($item) {
+        if (($item->quantity + $quantity) <= $product->stock_quantity) {
+            $item->quantity += $quantity;
+            $item->save();
+        } else {
+            return redirect()->route('basket')->withErrors(['quantity' => 'Out Of stock']);
+        }
+    } else {
+        $basket->items()->create([
+            'product_id' => $product->id,
+            'quantity' => $quantity,
+            'price' => $product->price,
+        ]);
+    }
+    $product->stock_quantity -= $quantity;
+    $product->save();
+
+        return Redirect::route('basket');
     }
 
 }
