@@ -145,7 +145,7 @@ public function wishlist(Request $request)
 
 public function add_wishlist(Request $request)
 {
-    $user = auth()->usser();
+    
 
     return Redirect::back();
 
