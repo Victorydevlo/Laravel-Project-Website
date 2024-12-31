@@ -15,5 +15,10 @@ class Product extends Model
 {
     return $this->hasOne('App\Models\ProductType','id','product_type_id', 'product_image');
 }
+
+public function isInWishlist()
+{
+    return auth()->check() && auth()->user()->wishlist()->where('product_id', $this->id)->exists();
+}
 }
 

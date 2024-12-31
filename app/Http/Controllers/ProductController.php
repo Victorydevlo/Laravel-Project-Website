@@ -142,4 +142,12 @@ public function wishlist(Request $request)
     return view('wishlist', ['products' => $products]);
 
 }
+
+public function add_wishlist(Request $request)
+{
+    $user = auth()->usser();
+
+    return Redirect::back();
+
+}
 }

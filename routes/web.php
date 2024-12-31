@@ -48,7 +48,7 @@ Route::get('/products/{id}', [ProductController::class, 'showed'])->name('showed
 
 Route::get('/wishlist', [ProductController::class, 'wishlist'])->name('wishlist');
 
-
+Route::get('/wishlists', [ProductController::class, 'add_wishlist'])->name('add_wishlist');
 
 
 //SEARCH

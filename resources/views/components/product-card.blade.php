@@ -14,7 +14,7 @@
         <p class="text-base text-center">{{$product->title}}</p>
         <p class="text-sm text-center">£{{$product->price}}</p>
         
-        @if(Route::is('product', 'productpage'))   
+        @if(Route::is('product', 'productpage', 'wishlist'))   
         <div class="rounded-full border border-gray-700 hover:bg-blue-700 px-8 mx-auto w-24">  
             <a href="/products/{{$product->id}}" class="text-center mx-auto text-black-50">Select</a>
         </div>
@@ -25,7 +25,7 @@
         @endif
         <div  class="px-14 flex justify-center align">
             <div>  
-                <a href="/product/{{$product->id}}" class="text-center mx-auto text-gray-50"><img src="/images/wishlist.png" class="w-6 h-6 mx-auto" ></a>
+                <a href="{{ route('add_wishlist', $product->id) }}" class="text-center mx-auto text-gray-50"><img src="/images/heart.png" class="w-6 h-6 mx-auto" ></a>
             </div>
 
             @can('can-edit-product')
