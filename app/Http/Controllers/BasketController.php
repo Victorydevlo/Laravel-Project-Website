@@ -18,10 +18,14 @@ class BasketController extends Controller
     public function index()
     {
         $products = Product::all();
-        $user_id =Auth::id();
+        $basket_id =Auth::id();
 
-        $basketitems = BasketItem::where('user_id', $user_id)->get();
-        return view('basket' ,['products'=>$products]);
+        $basketitems = BasketItem::where('basket_id', $basket_id)->get();
+        
+        $totprice = $basketitems->sum(function($basketitem) {
+            return $basketitem->products->price * $basketitem->quantity;
+        });
+        return view('basket' ,['basketitems'=>$basketitems, $totprice]);
     }
 
     /**
@@ -74,9 +78,11 @@ class BasketController extends Controller
         //
     }
 
-    public function add(Request $request)
+    public function add(Request $request, int $id)
     {
-//
+        $userid = Auth::id();
+        $product = Product::find($id);
+        
     }        
 
 }
