@@ -78,11 +78,17 @@ class BasketController extends Controller
         //
     }
 
-    public function add(Request $request, int $id)
+    public function add(Request $request, int $product_id)
     {
-        $userid = Auth::id();
-        $product = Product::find($id);
-        
+        $basketid = Auth::id();
+        $product = Product::find($product_id);
+
+        $basketitem = BasketItem::where('basket_id', $basketid)->where('product_id', $product_id)->first();
+
+        if($basketitem){
+            $basketitem->quantity += $request->quantity;
+            $basketitem->save();
+        }
     }        
 
 }
