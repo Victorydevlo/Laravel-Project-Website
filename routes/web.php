@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BasketController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -39,6 +40,8 @@ Route::get('/products', [ProductController::class, 'index2'])->name('productpage
 //ProductType Home Page
 Route::get('/producttype', [ProductTypeController::class, 'index'])->name('producttype');
 
+Route::get('/basket', [BasketController::class, 'index'])->name('basket');
+
 
 // show for product
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('show');
@@ -49,7 +52,6 @@ Route::get('/products/{id}', [ProductController::class, 'showed'])->name('showed
 Route::get('/wishlist', [ProductController::class, 'wishlist'])->name('wishlist');
 
 Route::get('/wishlists', [ProductController::class, 'add_wishlist'])->name('add_wishlist');
-
 
 //SEARCH
 Route::get('/search', [ProductController::class, 'search'])->name('search');

@@ -9,6 +9,10 @@
             @endif
         </div>
 
+        <div style="position: absolute; top: 5px; left: 5px; text-align: center;">
+        <div class="quanty"> {{$product->stock_quantity}} </div>
+        </div>
+
         <div class="product-card">
             <form action="{{ route('product') }}" method="POST">
                 @if($product['product_image'] == 'A')
@@ -20,9 +24,6 @@
                 @else
                     <img class="w-8 h-8 mx-auto" src="{{ asset('storage/images/' . $product->product_image) }}" alt="product">
                 @endif
-
-                <div class="rounded-full bg-lime-200 px-8 mx-auto w-24 text-center">{{$product->stock_quantity}}</div>
-
                 <div class="rounded-full bg-lime-200 px-8 mx-auto w-24 text-center">{{$product->productType->type ?? null}}</div>
                 <p class="text-xl font-semibold text-gray-800 text-center">{{$product->name}}</p>
                 <p class="text-base text-center">{{$product->title}}</p>
@@ -95,7 +96,7 @@
     gap: 25px;
 }
 
-.out, .in {
+.out, .in, .quanty {
     border-radius: 12px;
     padding: 3px 10px;
     font-size: 0.75rem; /* Small font size */
@@ -113,5 +114,11 @@
     background-color: #e8f5e9;
     border: 2px solid #4caf50;
     color: #4caf50;
+}
+
+.quanty {
+    background-color: #cbd5e1;
+    border: 2px solid #94a3b8;
+    color: #020617;
 }
 </style>

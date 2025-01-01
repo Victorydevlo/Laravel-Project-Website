@@ -78,8 +78,7 @@ class BasketController extends Controller
     $product = Product::findOrFail($request->input('id'));
     $quantity = $request->input('quantity', 1);
     if ($product->stock_quantity < $quantity) {
-        return redirect()->route('products')->withErrors(['quantity' => 'Out of stock']);
-    }
+        return Redirect::route('basket');    }
 
     $basket = auth()->user()->basket ?? Basket::create(['user_id' => auth()->id()]);
     $item = $basket->items()->where('product_id', $product->id)->first();
@@ -89,7 +88,7 @@ class BasketController extends Controller
             $item->quantity += $quantity;
             $item->save();
         } else {
-            return redirect()->route('basket')->withErrors(['quantity' => 'Out Of stock']);
+            return Redirect::route('basket');
         }
     } else {
         $basket->items()->create([
