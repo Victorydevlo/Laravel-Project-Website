@@ -44,7 +44,20 @@ class BasketController extends Controller
     {
         $basketitem = BasketItem::create($request->except('_token', '_method', 'file'));
 
-        $basketitem = $basketitem->fresh();        
+        $basketitem = $basketitem->fresh();
+
+        $userId = auth()->id();
+
+        if (!$userId) {
+            return redirect()->route('login');
+        }
+
+        $product = Product::findOrFail($request->product_id);
+
+        BasketItem::create([
+            $request->except('_token', '_method', 'file')
+        ]);
+        
     }
 
     /**

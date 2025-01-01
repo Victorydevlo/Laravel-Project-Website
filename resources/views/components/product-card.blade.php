@@ -1,5 +1,6 @@
-<form action="{{ route('basketitem.store') }}" method="POST">
+
 <div class="products-container"> 
+<form action="{{ route('basketitem.store') }}" method="POST">
     <div class="stockcard">
 
         <div style="position: absolute; top: 5px; right: 5px; text-align: center;">
@@ -71,8 +72,9 @@
             
         </div>
     </div>
+    </form>
 </div>
-</form>
+
 
 <style>
 .products-container {
