@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBasketItemRequest;
 use Illuminate\Http\Request;
 use App\Models\Basket;
 use App\Models\BasketItem;
@@ -39,9 +40,11 @@ class BasketController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store()  
+    public function store(StoreBasketItemRequest $request)  
     {
-        //
+        $basketitem = BasketItem::create($request->except('_token', '_method', 'file'));
+
+        $basketitem = $basketitem->fresh();        
     }
 
     /**
@@ -88,7 +91,15 @@ class BasketController extends Controller
         if($basketitem){
             $basketitem->quantity += $request->quantity;
             $basketitem->save();
+        }else {
+            BasketItem::create([
+                'basket_id' =>$product_id,
+                'product_id' =>$product_id,
+                'quantity' => $request->quantity,
+
+            ]);            
         }
+        return Redirect::route('basket');
     }        
 
 }

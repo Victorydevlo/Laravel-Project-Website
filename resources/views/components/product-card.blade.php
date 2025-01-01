@@ -1,3 +1,4 @@
+<form action="{{ route('basketitem.store') }}" method="POST">
 <div class="products-container"> 
     <div class="stockcard">
 
@@ -34,9 +35,12 @@
                         <a href="/products/{{$product->id}}" class="text-center mx-auto text-black-50">Select</a>
                     </div>
                 @elseif(Route::is('showed'))
+                
+                    @csrf
                     <div class="rounded-full border border-gray-700 hover:bg-blue-700 px-8 mx-auto w-24">  
-                        <a href="" class="text-center mx-auto text-black-50">Buy</a>
+                        <button type="submit" class="text-center mx-auto text-black-50">Buy</button>
                     </div>
+                
                 @endif
 
                 <div class="px-14 flex justify-center align">
@@ -68,6 +72,7 @@
         </div>
     </div>
 </div>
+</form>
 
 <style>
 .products-container {
