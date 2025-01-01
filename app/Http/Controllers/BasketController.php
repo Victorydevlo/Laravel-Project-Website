@@ -17,10 +17,11 @@ class BasketController extends Controller
      */
     public function index()
     {
-        $basket = Auth::user()->basket;
-        $items = $basket ? $basket->items : [];
+        $products = Product::all();
+        $user_id =Auth::id();
 
-        return view('basket', ['basket'=>$basket]);
+        $basketitems = BasketItem::where('user_id', $user_id)->get();
+        return view('basket' ,['products'=>$products]);
     }
 
     /**
@@ -75,32 +76,7 @@ class BasketController extends Controller
 
     public function add(Request $request)
     {
-    $product = Product::findOrFail($request->input('id'));
-    $quantity = $request->input('quantity', 1);
-    if ($product->stock_quantity < $quantity) {
-        return Redirect::route('basket');    }
-
-    $basket = auth()->user()->basket ?? Basket::create(['user_id' => auth()->id()]);
-    $item = $basket->items()->where('product_id', $product->id)->first();
-
-    if ($item) {
-        if (($item->quantity + $quantity) <= $product->stock_quantity) {
-            $item->quantity += $quantity;
-            $item->save();
-        } else {
-            return Redirect::route('basket');
-        }
-    } else {
-        $basket->items()->create([
-            'product_id' => $product->id,
-            'quantity' => $quantity,
-            'price' => $product->price,
-        ]);
-    }
-    $product->stock_quantity -= $quantity;
-    $product->save();
-
-        return Redirect::route('basket');
-    }
+//
+    }        
 
 }
