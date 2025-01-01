@@ -6,7 +6,7 @@
         @forelse ($basketitems as $basketitem)
             <x-product-card :basketitem="$basketitem" />  
         @empty
-            <p>No Products</p>
+            <p>Basket is Empty</p>
         @endforelse
     </div>
 </x-background-layout>
