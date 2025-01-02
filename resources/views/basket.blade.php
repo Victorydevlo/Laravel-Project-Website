@@ -4,7 +4,7 @@
     </div>   
     <div class="flex">
         @forelse ($basketitems as $basketitem)
-            <x-product-card :basketitem="$basketitem" />  
+            <x-product-card :basketitem="$basketitem": product="$product" />  
         @empty
             <p>Basket is Empty</p>
         @endforelse
