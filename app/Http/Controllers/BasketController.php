@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Basket;
 use App\Models\BasketItem;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
@@ -98,27 +99,36 @@ class BasketController extends Controller
         //
     }
 
-    public function add(Request $request, int $product_id, int $id)
+    public function add(Request $request, int $id)
     {
-        $product = Product::find($id);
-        $products = array($product);
+        $id = User::find($id);
         $basketid = Auth::id();
-        $product = Product::find($product_id);
+        $product_id = Product::find($id);
 
-        $basketitem = BasketItem::where('basket_id', $basketid)->where('product_id', $product_id)->first();
+        $basketitem = BasketItem::where('basket_id', $basketid)->get();
+        $quantity = BasketItem::where('quantity')->get();
+
+        $totprice = $basketitem->sum(function($basketitem) {
+            if ($basketitem->products) {
+                $basketitem->products->price * $basketitem->quantity;
+            } else {
+                $basketitem = $basketitem;
+            }
+        });
 
         if($basketitem){
-            $basketitem->quantity += $request->quantity;
+            $basketitem->$quantity += $request->quantity;
             $basketitem->save();
         }else {
             BasketItem::create([
-                'basket_id' =>$product_id,
+                'basket_id' =>$basketid,
                 'product_id' =>$product_id,
                 'quantity' => $request->quantity,
+                'price' => $totprice,
 
             ]);            
         }
-        return Redirect::route('basket');
+        return Redirect::route('product');
     }        
 
 }

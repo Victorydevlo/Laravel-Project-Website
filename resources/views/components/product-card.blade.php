@@ -32,6 +32,12 @@
                 <p class="text-base text-center">{{$product->title}}</p>
                 <p class="text-sm text-center">£{{$product->price}}</p>
 
+                @if(Route::is('showed'))
+                <p>
+                    <input type="number" step='1' name="quantity"  placeholder="quantity" value ="{{ $basketitem->quantity ?? ($product->stock_quantity ?? '') }}"/>
+                </p>     
+                @endif
+
                 @if(Route::is('product', 'productpage', 'wishlist'))   
                     <div class="rounded-full border border-gray-700 hover:bg-blue-700 px-8 mx-auto w-24">  
                         <a href="/products/{{$product->id}}" class="text-center mx-auto text-black-50">Select</a>

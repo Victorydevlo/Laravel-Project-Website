@@ -43,7 +43,7 @@ Route::get('/producttype', [ProductTypeController::class, 'index'])->name('produ
 Route::get('/basket', [BasketController::class, 'index'])->name('basket');
 
 
-Route::get('/basket/{id}', [BasketController::class, 'add'])->name('added');
+Route::post('/basket/{id}', [BasketController::class, 'add'])->name('added');
 
 // show for product
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('show');
