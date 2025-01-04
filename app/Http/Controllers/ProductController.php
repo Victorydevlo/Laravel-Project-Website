@@ -47,9 +47,9 @@ class ProductController extends Controller
         $type = $request->query('type');
 
         if ($type == "CD") {
-            $products = Product::where("product_type_id", 2)->limit(5)->get();
+            $products = Product::where("product_type_id", 2)->get();
         } elseif ($type == "Book") {
-            $products = Product::where("product_type_id", 1)->limit(5)->get();
+            $products = Product::where("product_type_id", 1)->get();
         } else {
             $products = Product::all();
         }

@@ -104,15 +104,23 @@
                 </button>
             </x-slot>
             <x-slot name="content" style='overflow:hidden; width:100%; height:500px; position:relative;'>
-            <div>
-                <h1>Order by:</h1>        
-                <button class="rounded-xl border border-gray-700 px-3 py-1 m-1" type="submit" name = "submit" value = "CD">CD</button>
-                <button class="rounded-xl border border-gray-700 px-3 py-1 m-1" type="submit" name = "submit" value = "Book">Book</button>
-            </div>
+                <h1>Order by:</h1>
+                <a href="{{ route('filter', ['type' => 'CD']) }}" class="rounded-xl border border-gray-700 px-3 py-1 m-1 inline-block text-gray-700 hover:text-blue-700">CD</a>
+                <a href="{{ route('filter', ['type' => 'Book']) }}" class="rounded-xl border border-gray-700 px-3 py-1 m-1 inline-block text-gray-700 hover:text-blue-700">Book</a>
+                <a href="{{ route('filter', ['type' => 'Game']) }}" class="rounded-xl border border-gray-700 px-3 py-1 m-1 inline-block text-gray-700 hover:text-blue-700">Game</a>
+
             </x-slot>
         </x-dropdown>
     </div>
-
+<style>
+    .products-container {
+    display: flex;
+    display: inline-block;
+    flex-wrap: nowrap;
+    gap: 7rem;
+    margin-top: 5;
+}
+</style>
     @if(Route::is('productpage'))
     <div class="navbarstyle">
         <form action="{{ route('search') }}" method="GET">

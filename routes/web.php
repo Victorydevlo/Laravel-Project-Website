@@ -18,7 +18,7 @@ Route::get('/producttype/create', [ProductTypeController::class, 'create'])->nam
 //Product Edit
 Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->middleware('can:can-edit-product')->name('edit');
 
-Route::get('/product/filter', [ProductController::class, 'filter'])->middleware('can:can-edit-product')->name('filter');
+Route::get('/product/filter', [ProductController::class, 'filter'])->name('filter');
 
 
 
