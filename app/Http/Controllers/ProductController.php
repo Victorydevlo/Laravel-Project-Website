@@ -42,6 +42,21 @@ class ProductController extends Controller
 
     }
 
+    public function filter(Request $request)
+    {
+
+        
+        if ($request->submit == "CD") {
+            $products = Product::where("product_type_id", 2)->limit(5)->get();
+        } elseif ($request->submit == "Book") {
+            $products = Product::where("product_type_id", 1)->limit(5)->get();
+        } else {
+            $products = Product::all();
+        }
+
+        return view('productspage', ['products'=>$products]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
