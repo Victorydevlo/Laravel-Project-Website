@@ -104,11 +104,13 @@
                 </button>
             </x-slot>
             <x-slot name="content" style='overflow:hidden; width:100%; height:500px; position:relative;'>
-                <form method="POST" action="{{ route('logout') }}">
-
-                    <div style="text-align: right;">
-                    </div>
-                </form>
+            <form action="{{ route('filter') }}" method="GET">
+            <div>
+                <h1>Order by:</h1>        
+                <button class="rounded-xl border border-gray-700 px-3 py-1 m-1" type="submit" name = "submit" value = "CD">CD</button>
+                <button class="rounded-xl border border-gray-700 px-3 py-1 m-1" type="submit" name = "submit" value = "Book">Book</button>
+            </div>
+            </form>
             </x-slot>
         </x-dropdown>
     </div>

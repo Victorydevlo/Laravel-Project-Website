@@ -18,6 +18,9 @@ Route::get('/producttype/create', [ProductTypeController::class, 'create'])->nam
 //Product Edit
 Route::get('/product/{id}/edit', [ProductController::class, 'edit'])->middleware('can:can-edit-product')->name('edit');
 
+Route::get('/product/filter', [ProductController::class, 'filter'])->middleware('can:can-edit-product')->name('filter');
+
+
 
 //Product Type Edit
 Route::get('/producttype/{id}/edit', [ProductTypeController::class, 'edit'])->name('edittp');
@@ -42,7 +45,6 @@ Route::get('/producttype', [ProductTypeController::class, 'index'])->name('produ
 
 Route::get('/basket', [BasketController::class, 'index'])->name('basket');
 
-
 Route::post('/basket/{id}', [BasketController::class, 'add'])->name('added');
 
 // show for product
@@ -57,6 +59,9 @@ Route::get('/wishlists', [ProductController::class, 'add_wishlist'])->name('add_
 
 //SEARCH
 Route::get('/search', [ProductController::class, 'search'])->name('search');
+
+Route::get('/basket/create', [BasketController::class, 'create'])->middleware('can:create,App\Models\Product')->name('create');
+
 
 
 

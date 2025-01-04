@@ -22,7 +22,7 @@ class BasketController extends Controller
         $products = Product::all();
         $basket_id =Auth::id();
 
-        $basketitems = BasketItem::where('basket_id', $basket_id)->get();
+        $basketitems = BasketItem::where('basket_id', $basket_id)->with('product')->get();
         
         $totprice = $basketitems->sum(function($basketitem) {
             if ($basketitem->products) {
@@ -31,7 +31,7 @@ class BasketController extends Controller
                 return 0;
             }
         });
-        return view('basket' ,['basketitems'=>$basketitems, $totprice]);
+        return view('basket' ,['basketitems'=>$basketitems, 'totprice' => $totprice]);
     }
 
     /**
@@ -39,7 +39,8 @@ class BasketController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::all();
+        return view('product-card', ['products' => $products]);
     }
 
     /**
@@ -47,22 +48,24 @@ class BasketController extends Controller
      */
     public function store(StoreBasketItemRequest $request)  
     {
-        $basketitem = BasketItem::create($request->except('_token', '_method', 'file'));
-
-        $basketitem = $basketitem->fresh();
-
         $userId = auth()->id();
 
         if (!$userId) {
             return redirect()->route('login');
         }
 
-        $product = Product::findOrFail($request->product_id);
+        $basketItem = BasketItem::where('basket_id', $userId)
+        ->where('id', $request->id)
+        ->first();
 
-        BasketItem::create([
-            $request->except('_token', '_method', 'file')
-        ]);
-        
+            if ($basketItem) {
+                $basketItem->quantity += $request->quantity;
+                $basketItem->save;
+            }else{
+            BasketItem::create($request->except('_token', '_method', 'file'));
+            }
+
+        return Redirect::route('product');
     }
 
     /**
@@ -101,34 +104,38 @@ class BasketController extends Controller
 
     public function add(Request $request, int $id)
     {
+        //All basket item to be called for use
+
+        $basketitem = BasketItem::all();
         $id = User::find($id);
+        //Basket ID for each user ID
         $basketid = Auth::id();
-        $product_id = Product::find($id);
 
-        $basketitem = BasketItem::where('basket_id', $basketid)->get();
-        $quantity = BasketItem::where('quantity')->get();
+        if(!$basketid){
+            return back();
+        }
 
-        $totprice = $basketitem->sum(function($basketitem) {
-            if ($basketitem->products) {
-                $basketitem->products->price * $basketitem->quantity;
-            } else {
-                $basketitem = $basketitem;
-            }
-        });
+        //Product ID
+
+        $basketitem = BasketItem::where('basket_id', $basketid)->where('id', $request->id)->first();
+
+        // $totprice = $basketitem->sum(function($basketitem) {
+        //     if ($basketitem->products) {
+        //         $basketitem->products->price * $basketitem->quantity;
+        //     } else {
+        //         $basketitem = $basketitem;
+        //     }
+        // });
 
         if($basketitem){
-            $basketitem->$quantity += $request->quantity;
+            $basketitem->quantity += $request-> quantity;
             $basketitem->save();
         }else {
-            BasketItem::create([
-                'basket_id' =>$basketid,
-                'product_id' =>$product_id,
-                'quantity' => $request->quantity,
-                'price' => $totprice,
-
-            ]);            
+            BasketItem::create($request -> except('_token', '_method', 'file'));            
         }
-        return Redirect::route('product');
+
+
+        return Redirect::route('basket');
     }        
 
 }

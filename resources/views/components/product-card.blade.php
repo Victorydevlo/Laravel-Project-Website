@@ -1,6 +1,5 @@
-
 <div class="products-container"> 
-<form action="{{ route('added', ['id'=>$product->id]) }}" method="POST">
+<form action="{{ route('basketitem.store', ['id'=>$product->id]) }}" method="POST">
         
     <div class="stockcard">
 
@@ -31,10 +30,15 @@
                 <p class="text-xl font-semibold text-gray-800 text-center">{{$product->name}}</p>
                 <p class="text-base text-center">{{$product->title}}</p>
                 <p class="text-sm text-center">£{{$product->price}}</p>
+                <input type="hidden" name="price" value="{{ $product->price ?? '' }}">
+                <input type="hidden" name="id" value="{{ $product->id ?? '' }}">
+                <input type="hidden" name="userid" value="{{ $user->id ?? '' }}">
+
+
 
                 @if(Route::is('showed'))
                 <p>
-                    <input type="number" step='1' name="quantity"  placeholder="quantity" value ="{{ $basketitem->quantity ?? ($product->stock_quantity ?? '') }}"/>
+                    <input type="number" step='1' name="quantity"  placeholder="quantity" value = "{{$product->stock_quantity ?? 0}}"/>
                 </p>     
                 @endif
 
