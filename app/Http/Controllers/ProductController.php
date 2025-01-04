@@ -44,11 +44,11 @@ class ProductController extends Controller
 
     public function filter(Request $request)
     {
+        $type = $request->query('type');
 
-        
-        if ($request->submit == "CD") {
+        if ($type == "CD") {
             $products = Product::where("product_type_id", 2)->limit(5)->get();
-        } elseif ($request->submit == "Book") {
+        } elseif ($type == "Book") {
             $products = Product::where("product_type_id", 1)->limit(5)->get();
         } else {
             $products = Product::all();
