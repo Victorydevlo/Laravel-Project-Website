@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ProductSeeder::class);
         $this->call(ProductImageSeeder::class);
         $this->call(WishSeeder::class);
+        $this->call(BasketItemSeeder::class);        
 
 
         User::factory()->create([

@@ -100,7 +100,7 @@
 
         </div>                        
     </div>
-    @if(Route::is('productpage', 'filter'))
+    @if(Route::is('productpage', 'filter', 'search'))
     <div class="navbarstyle">
         <form action="{{ route('search') }}" method="GET">
         

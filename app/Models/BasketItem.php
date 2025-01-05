@@ -11,16 +11,13 @@ class BasketItem extends Model
 
     use HasFactory;
 
-    protected $fillable = ['basket_id', 'product_id', 'name', 'title', 'quantity', 'price'];
+    protected $table = 'basket_items';
 
-    public function basket()
-    {
-        return $this->belongsTo(Basket::class);
-    }
+    protected $fillable = ['basket_id', 'quantity', 'price', 'product_id'];
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'id');
     }
 
     public function product()

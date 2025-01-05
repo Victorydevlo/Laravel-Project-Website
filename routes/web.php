@@ -45,7 +45,7 @@ Route::get('/producttype', [ProductTypeController::class, 'index'])->name('produ
 
 Route::get('/basket', [BasketController::class, 'index'])->name('basket');
 
-Route::post('/basket/{id}', [BasketController::class, 'add'])->name('added');
+Route::post('/baskets/{id}', [BasketController::class, 'add'])->name('added');
 
 // show for product
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('show');
@@ -60,7 +60,7 @@ Route::get('/wishlists', [ProductController::class, 'add_wishlist'])->name('add_
 //SEARCH
 Route::get('/search', [ProductController::class, 'search'])->name('search');
 
-Route::get('/basket/create', [BasketController::class, 'create'])->middleware('can:create,App\Models\Product')->name('create');
+Route::get('/basket/create', [BasketController::class, 'create'])->name('creation2');
 
 
 
@@ -72,7 +72,7 @@ Route::put('/product/{id}', [ProductController::class, 'updates'])->name('produc
 Route::post('/producttype', [ProductTypeController::class, 'store'])->middleware('can:create,App\Models\Product')->name('ptstore');
 Route::put('/producttype/{id}', [ProductTypeController::class, 'updates'])->middleware('can:can-edit-product')->name('producttype.update');
 
-Route::post('/basket/store', [BasketController::class, 'store'])->name('basketitem.store');
+Route::post('/basket/{id}', [BasketController::class, 'store'])->name('basketitem.store');
 
 //Welcome Route
 

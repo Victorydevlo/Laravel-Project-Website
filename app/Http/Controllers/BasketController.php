@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBasketItemRequest;
 use Illuminate\Http\Request;
-use App\Models\Basket;
 use App\Models\BasketItem;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
+use function Illuminate\Routing\Controllers\except;
 
 class BasketController extends Controller
 {
@@ -19,7 +19,6 @@ class BasketController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
         $basket_id =Auth::id();
 
         $basketitems = BasketItem::where('basket_id', $basket_id)->with('product')->get();
@@ -39,8 +38,7 @@ class BasketController extends Controller
      */
     public function create()
     {
-        $products = Product::all();
-        return view('product-card', ['products' => $products]);
+        //
     }
 
     /**
@@ -48,24 +46,20 @@ class BasketController extends Controller
      */
     public function store(StoreBasketItemRequest $request)  
     {
-        $userId = auth()->id();
+        $product = Product::find($request->product_id);
 
-        if (!$userId) {
-            return redirect()->route('login');
-        }
+        
 
-        $basketItem = BasketItem::where('basket_id', $userId)
-        ->where('id', $request->id)
-        ->first();
-
-            if ($basketItem) {
-                $basketItem->quantity += $request->quantity;
-                $basketItem->save;
-            }else{
-            BasketItem::create($request->except('_token', '_method', 'file'));
-            }
-
-        return Redirect::route('product');
+        $basketid = Auth::id();        
+            $basketItems = BasketItem::create([
+                'basket_id' => $basketid,
+                'product_id' => $product->id,
+                'quantity'=> $request->quantity,
+                'price' => $product->price,
+                $request->except('_token', '_method', 'file'),
+            ]);
+            $basketItems = $basketItems->fresh();        
+        return Redirect::route('basket', ['basketItem' => $basketItems]);
     }
 
     /**
@@ -89,9 +83,31 @@ class BasketController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function updates(int $id)
+    public function updates(StoreBasketItemRequest $request)
     {
-        //
+        $product = Product::find($request->product_id);
+        $basketid = Auth::id();        
+
+
+        $basketItems = BasketItem::where('basket_id', $basketid)
+        ->where('product_id', $product->id)
+        ->first();
+
+        if($basketItems){
+            $basketItems->quantity += $request-> quantity;
+
+            if ($basketItems->quantity > $product->stock_quantity){
+                return back();
+            }
+            $basketItems->save();
+        }else {
+            $basketItems = BasketItem::create([
+                'basket_id' => $basketid,
+                'product_id' => $product->id,
+                'quantity'=> $request->quantity,
+                'price' => $product->price,
+            ]);
+        }
     }
 
     /**
@@ -102,40 +118,7 @@ class BasketController extends Controller
         //
     }
 
-    public function add(Request $request, int $id)
+    public function add(StoreBasketItemRequest $request, $id)
     {
-        //All basket item to be called for use
-
-        $basketitem = BasketItem::all();
-        $id = User::find($id);
-        //Basket ID for each user ID
-        $basketid = Auth::id();
-
-        if(!$basketid){
-            return back();
-        }
-
-        //Product ID
-
-        $basketitem = BasketItem::where('basket_id', $basketid)->where('id', $request->id)->first();
-
-        // $totprice = $basketitem->sum(function($basketitem) {
-        //     if ($basketitem->products) {
-        //         $basketitem->products->price * $basketitem->quantity;
-        //     } else {
-        //         $basketitem = $basketitem;
-        //     }
-        // });
-
-        if($basketitem){
-            $basketitem->quantity += $request-> quantity;
-            $basketitem->save();
-        }else {
-            BasketItem::create($request -> except('_token', '_method', 'file'));            
-        }
-
-
-        return Redirect::route('basket');
-    }        
-
+    }
 }

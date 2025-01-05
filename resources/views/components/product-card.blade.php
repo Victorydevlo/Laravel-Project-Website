@@ -30,16 +30,17 @@
                 <p class="text-xl font-semibold text-gray-800 text-center">{{$product->name}}</p>
                 <p class="text-base text-center">{{$product->title}}</p>
                 <p class="text-sm text-center">£{{$product->price}}</p>
+
                 <input type="hidden" name="price" value="{{ $product->price ?? '' }}">
-                <input type="hidden" name="id" value="{{ $product->id ?? '' }}">
-                <input type="hidden" name="userid" value="{{ $user->id ?? '' }}">
+                <input type="hidden" name="product_id" value="{{ $product->id ?? '' }}">
+                <input type="hidden" name="basket_id" value="{{ Auth::id() ?? '' }}">
                 @if(Route::is('showed'))
                 <p>
-                    <input type="number" step='1' name="quantity"  placeholder="quantity" value = "{{$product->stock_quantity ?? 0}}"/>
+                    <input type="number" step='1' name="quantity"  placeholder="Enter Amount" value = '1'/>
                 </p>     
                 @endif
 
-                @if(Route::is('product', 'productpage', 'wishlist'))   
+                @if(Route::is('product', 'productpage', 'wishlist', 'filter'))   
                     <div class="rounded-full border border-gray-700 hover:bg-blue-700 px-8 mx-auto w-24">  
                         <a href="/products/{{$product->id}}" class="text-center mx-auto text-black-50">Select</a>
                     </div>
