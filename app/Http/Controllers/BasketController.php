@@ -47,9 +47,20 @@ class BasketController extends Controller
     public function store(StoreBasketItemRequest $request)  
     {
         $product = Product::find($request->product_id);
+        $basketid = Auth::id();   
 
-        
+        $basketItems = BasketItem::where('basket_id', $basketid)
+        ->where('product_id', $product->id)
+        ->first();
 
+        if($basketItems){
+            $basketItems->quantity += $request-> quantity;
+
+            if ($basketItems->quantity > $product->stock_quantity){
+                return back();
+            }
+            $basketItems->save();
+        }else {
         $basketid = Auth::id();        
             $basketItems = BasketItem::create([
                 'basket_id' => $basketid,
@@ -58,8 +69,10 @@ class BasketController extends Controller
                 'price' => $product->price,
                 $request->except('_token', '_method', 'file'),
             ]);
-            $basketItems = $basketItems->fresh();        
-        return Redirect::route('basket', ['basketItem' => $basketItems]);
+            $basketItems = $basketItems->fresh();
+        }
+
+        return Redirect::route('product', ['basketItem' => $basketItems]);
     }
 
     /**
@@ -84,30 +97,8 @@ class BasketController extends Controller
      * Update the specified resource in storage.
      */
     public function updates(StoreBasketItemRequest $request)
-    {
-        $product = Product::find($request->product_id);
-        $basketid = Auth::id();        
-
-
-        $basketItems = BasketItem::where('basket_id', $basketid)
-        ->where('product_id', $product->id)
-        ->first();
-
-        if($basketItems){
-            $basketItems->quantity += $request-> quantity;
-
-            if ($basketItems->quantity > $product->stock_quantity){
-                return back();
-            }
-            $basketItems->save();
-        }else {
-            $basketItems = BasketItem::create([
-                'basket_id' => $basketid,
-                'product_id' => $product->id,
-                'quantity'=> $request->quantity,
-                'price' => $product->price,
-            ]);
-        }
+    {       
+        //
     }
 
     /**
