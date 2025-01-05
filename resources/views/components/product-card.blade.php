@@ -33,9 +33,6 @@
                 <input type="hidden" name="price" value="{{ $product->price ?? '' }}">
                 <input type="hidden" name="id" value="{{ $product->id ?? '' }}">
                 <input type="hidden" name="userid" value="{{ $user->id ?? '' }}">
-
-
-
                 @if(Route::is('showed'))
                 <p>
                     <input type="number" step='1' name="quantity"  placeholder="quantity" value = "{{$product->stock_quantity ?? 0}}"/>

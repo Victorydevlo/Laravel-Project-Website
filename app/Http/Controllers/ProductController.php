@@ -50,10 +50,21 @@ class ProductController extends Controller
             $products = Product::where("product_type_id", 2)->get();
         } elseif ($type == "Book") {
             $products = Product::where("product_type_id", 1)->get();
-        } else {
+        } elseif ($type == "Game") {
+            $products = Product::where("product_type_id", 3)->get();
+        } elseif ($type == "A-Z") {
+            $products = Product::orderBy("name", "asc")->get();
+        } elseif ($type == "Low") {
+            $products = Product::orderBy("price", "asc")->get();
+        } elseif ($type == "High") {
+            $products = Product::orderBy("price", "desc")->get();
+        } elseif ($type == "Stock") {
+            $products = Product::orderBy("stock_quantity", 'desc')->get();
+        } 
+        else {
             $products = Product::all();
         }
-
+        
         return view('productspage', ['products'=>$products]);
     }
 
