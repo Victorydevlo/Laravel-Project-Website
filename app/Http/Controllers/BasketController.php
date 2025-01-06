@@ -22,6 +22,8 @@ class BasketController extends Controller
         $basket_id =Auth::id();
 
         $basketitems = BasketItem::where('basket_id', $basket_id)->with('product')->get();
+
+        $products = Product::all();
         
         $totprice = $basketitems->sum(function($basketitem) {
             if ($basketitem->products) {
@@ -30,7 +32,7 @@ class BasketController extends Controller
                 return 0;
             }
         });
-        return view('basket' ,['basketitems'=>$basketitems, 'totprice' => $totprice]);
+        return view('basket' ,['basketitems'=>$basketitems, 'products' => $products ,'totprice' => $totprice]);
     }
 
     /**
@@ -48,6 +50,10 @@ class BasketController extends Controller
     {
         $product = Product::find($request->product_id);
         $basketid = Auth::id();   
+
+        if ($product->stock_quantity < $request->quantity) {
+            return redirect()->route('product');
+        }
 
         $basketItems = BasketItem::where('basket_id', $basketid)
         ->where('product_id', $product->id)
@@ -71,6 +77,9 @@ class BasketController extends Controller
             ]);
             $basketItems = $basketItems->fresh();
         }
+
+        $product->stock_quantity -= $request->quantity;
+        $product->save();
 
         return Redirect::route('product', ['basketItem' => $basketItems]);
     }

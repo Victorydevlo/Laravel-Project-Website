@@ -1,6 +1,8 @@
 <div class="products-container"> 
 <form action="{{ route('basketitem.store', ['id'=>$product->id]) }}" method="POST">
+        
     <div class="stockcard">
+
         <div style="position: absolute; top: 5px; right: 5px; text-align: center;">
             @if($product-> stock_quantity <= 0)
                 <div class="out">Out of stock</div>
