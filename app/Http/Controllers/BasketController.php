@@ -48,6 +48,9 @@ class BasketController extends Controller
      */
     public function store(StoreBasketItemRequest $request)  
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $product = Product::find($request->product_id);
         $basketid = Auth::id();   
 

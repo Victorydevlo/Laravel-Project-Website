@@ -40,6 +40,9 @@ class WishListController extends Controller
      */
     public function store(StoreWishListRequest $request)  
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }            
         $product = Product::find($request->wishlist_id);
         $userid = Auth::id();   
 
