@@ -44,22 +44,22 @@ class ProductController extends Controller
         $type = $request->query('type');
 
         if ($type == "CD") {
-            $products = Product::where("product_type_id", 2)->get();
+            $products = Product::where("product_type_id", 2)->paginate(15);
         } elseif ($type == "Book") {
-            $products = Product::where("product_type_id", 1)->get();
+            $products = Product::where("product_type_id", 1)->paginate(15);
         } elseif ($type == "Game") {
-            $products = Product::where("product_type_id", 3)->get();
+            $products = Product::where("product_type_id", 3)->paginate(15);
         } elseif ($type == "A-Z") {
-            $products = Product::orderBy("title", "asc")->get();
+            $products = Product::orderBy("title", "asc")->paginate(15);
         } elseif ($type == "Low") {
-            $products = Product::orderBy("price", "asc")->get();
+            $products = Product::orderBy("price", "asc")->paginate(15);
         } elseif ($type == "High") {
-            $products = Product::orderBy("price", "desc")->get();
+            $products = Product::orderBy("price", "desc")->paginate(15);
         } elseif ($type == "Stock") {
-            $products = Product::orderBy("stock_quantity", 'desc')->get();
+            $products = Product::orderBy("stock_quantity", 'desc')->paginate(15);
         } 
         else {
-            $products = Product::all();
+            $products = Product::paginate(15);
         }
         
         return view('productspage', ['products'=>$products]);
@@ -156,7 +156,7 @@ class ProductController extends Controller
 
     $search = $request->input('search');
 
-    $products = Product::where('title', 'LIKE', '%' . $search . '%')->where('name', 'LIKE', '%' . $search . '%')->get();
+    $products = Product::where('title', 'LIKE', '%' . $search . '%')->where('name', 'LIKE', '%' . $search . '%')->paginate(15)->appends(request()->query());
 
     return view('productsearch', ['products' => $products]);
 

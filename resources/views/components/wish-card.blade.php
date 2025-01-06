@@ -29,31 +29,9 @@
                 <p class="text-xl font-semibold text-gray-800 text-center">{{$wishlists->product->title}}</p>
                 <p class="text-base text-center">{{$wishlists->product->name}}</p>
                 <p class="text-sm text-center">£{{$wishlists->product->price}}</p>
-                
-
-                
-
                     <input type="hidden" name="price" value="{{ $wishlists->product->price ?? '' }}">
                     <input type="hidden" name="product_id" value="{{ $wishlists->product->id ?? '' }}">
                     <input type="hidden" name="basket_id" value="{{ Auth::id() ?? '' }}">
-                    @if(Route::is('showed'))
-                        <p>
-                            <input type="number" step='1' name="quantity"  placeholder="Enter Amount" value = '1' min='0'/>
-                        </p>     
-                    @endif
-
-
-                    @if(Route::is('product', 'productpage', 'wishlist', 'filter'))   
-                        <div class="rounded-full border border-gray-700 hover:bg-blue-700 px-8 mx-auto w-24">  
-                            <a href="/products/{{$wishlists->product->id}}" class="text-center mx-auto text-black-50">Select</a>
-                        </div>
-                    @elseif(Route::is('showed'))
-                
-                    
-                        <div class="rounded-full border border-gray-700 hover:bg-blue-700 px-8 mx-auto w-24">  
-                            <button type="submit" class="text-center mx-auto text-black-50">Add</button>
-                        </div>
-                    @endif
                 </form>
                 <div class="px-14 flex justify-center align">                    
                 <form action="{{ route('wisdelete', $wishlists->id) }}" method="POST" class="remove-item-form">

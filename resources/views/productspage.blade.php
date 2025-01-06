@@ -12,5 +12,6 @@
 
     <div class="mt-6">
     {{ $products->links() }}
+    
 </div>
 </x-productspage>
