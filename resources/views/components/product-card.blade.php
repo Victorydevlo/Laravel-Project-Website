@@ -52,7 +52,7 @@
                 
                     
                         <div class="rounded-full border border-gray-700 hover:bg-blue-700 px-8 mx-auto w-24">  
-                            <button type="submit" class="text-center mx-auto text-black-50">Buy</button>
+                            <button type="submit" class="text-center mx-auto text-black-50">ADD</button>
                         </div>
                     @endif
                 </form>    
