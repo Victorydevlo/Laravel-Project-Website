@@ -17,15 +17,17 @@
             <a href="{{ route('producttype') }}" class="text-gray-700 hover:text-blue-700 transition duration-300">Add Product Type</a>
         </div>        
     @endcan
-    <div class="justify-end">
-        <div class="px-6 py-2 m-3 w-26 justify-end">  
-        <a href="{{ route('wishlist') }}" class="text-center mx-auto text-gray-50"><img src="/images/wishlist.png" class="w-6 h-6 mx-auto" ></a>
-        </div> 
-    </div>
+    <div class="flex ml-auto" style="position: absolute; right: 5px; ">
+        <div class="justify-end">
+            <div class=" py-2 m-3 w-26 justify-end">  
+                <a href="{{ route('wishlist') }}" class="text-center mx-auto text-gray-50"><img src="/images/wishlist.png" class="w-6 h-6 mx-auto" ></a>
+            </div> 
+        </div>
 
-    <div class="justify-end">
-        <div class="px-6 py-2 m-3 w-26 justify-end">  
-        <a href="{{ route('basket') }}" class="text-center mx-auto text-gray-50"><img src="/images/wishlist.png" class="w-6 h-6 mx-auto" ></a>
-        </div> 
+        <div class="justify-end">
+            <div class="px-4 py-2 m-3 w-22 justify-end">  
+                <a href="{{ route('basket') }}" class="text-center mx-auto text-gray-50"><img src="/images/a.png" class="w-6 h-6 mx-auto" ></a>
+            </div> 
+        </div>
     </div>
 </div>

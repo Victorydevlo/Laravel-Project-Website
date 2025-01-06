@@ -15,6 +15,7 @@
             <a href="/producttype" class="px-4 py-2 block">More</a>
         </div>
     </div>
+
     <div class="lines"></div>
         <div class="flex">
             @forelse ($productrandomcd as $product)
