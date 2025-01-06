@@ -165,12 +165,6 @@ class ProductController extends Controller
 
 }
 
-public function wishlist(Request $request)
-{
-    $products = WishList::all();
-    return view('wishlist', ['products' => $products]);
-
-}
 
 public function add_wishlist(Request $request)
 {

@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductTypeController;
+use App\Http\Controllers\WishListController;
 
 
 //Product Create
@@ -53,7 +54,7 @@ Route::get('/product/{id}', [ProductController::class, 'show'])->name('show');
 Route::get('/products/{id}', [ProductController::class, 'showed'])->name('showed');
 
 
-Route::get('/wishlist', [ProductController::class, 'wishlist'])->name('wishlist');
+Route::get('/wishlist', [WishListController::class, 'index'])->name('wishlist');
 
 Route::get('/wishlists', [ProductController::class, 'add_wishlist'])->name('add_wishlist');
 
