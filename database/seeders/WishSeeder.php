@@ -14,17 +14,12 @@ class WishSeeder extends Seeder
     public function run(): void
     {
         $wishlist = [
-            ['name' => 'The Jam', 'title' => 'Modern World','price' => 399, 'product_type_id' => 1, 'product_image' => 'A'],
-            ['name' => 'Amy Winehouse', 'title' => 'Back to Black','price' => 299,'product_type_id' => 1, 'product_image' => 'A'],
         ];
         
         foreach($wishlist as $wishlists) {
             WishList::create([
-                'name' => $wishlists['name'],
-                'title' => $wishlists['title'],
-                'price' => $wishlists['price'],
-                'product_type_id' => $wishlists['product_type_id'],
-                'product_image' => $wishlists['product_image']
+                'user_id' => $wishlists['user_id'],
+                'wishlist_id' => $wishlists['wishlist_id'],
             ]);
         }
     }
