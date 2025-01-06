@@ -74,6 +74,7 @@ Route::post('/producttype', [ProductTypeController::class, 'store'])->middleware
 Route::put('/producttype/{id}', [ProductTypeController::class, 'updates'])->middleware('can:can-edit-product')->name('producttype.update');
 
 Route::post('/basket/{id}', [BasketController::class, 'store'])->name('basketitem.store');
+Route::post('/wishlist/{id}', [WishListController::class, 'store'])->name('wishlist.store');
 
 //Welcome Route
 

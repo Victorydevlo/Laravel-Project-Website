@@ -1,5 +1,4 @@
 <div class="products-container"> 
-<form action="{{ route('basketitem.store', ['id'=>$product->id]) }}" method="POST">
     <div class="stockcard">
         <div style="position: absolute; top: 5px; right: 5px; text-align: center;">
             @if($product-> stock_quantity <= 0)
@@ -29,57 +28,63 @@
                 <p class="text-base text-center">{{$product->title}}</p>
                 <p class="text-sm text-center">£{{$product->price}}</p>
                 
-                <input type="hidden" name="price" value="{{ $product->price ?? '' }}">
-                <input type="hidden" name="product_id" value="{{ $product->id ?? '' }}">
-                <input type="hidden" name="basket_id" value="{{ Auth::id() ?? '' }}">
-                @if(Route::is('showed'))
-                <p>
-                    <input type="number" step='1' name="quantity"  placeholder="Enter Amount" value = '1'/>
-                </p>     
-                @endif
 
-                @if(Route::is('product', 'productpage', 'wishlist', 'filter'))   
-                    <div class="rounded-full border border-gray-700 hover:bg-blue-700 px-8 mx-auto w-24">  
-                        <a href="/products/{{$product->id}}" class="text-center mx-auto text-black-50">Select</a>
-                    </div>
-                @elseif(Route::is('showed'))
+                <form action="{{ route('basketitem.store', ['id'=>$product->id]) }}" method="POST">
+
+                    <input type="hidden" name="price" value="{{ $product->price ?? '' }}">
+                    <input type="hidden" name="product_id" value="{{ $product->id ?? '' }}">
+                    <input type="hidden" name="basket_id" value="{{ Auth::id() ?? '' }}">
+                    @if(Route::is('showed'))
+                        <p>
+                            <input type="number" step='1' name="quantity"  placeholder="Enter Amount" value = '1'/>
+                        </p>     
+                    @endif
+
+
+                    @if(Route::is('product', 'productpage', 'wishlist', 'filter'))   
+                        <div class="rounded-full border border-gray-700 hover:bg-blue-700 px-8 mx-auto w-24">  
+                            <a href="/products/{{$product->id}}" class="text-center mx-auto text-black-50">Select</a>
+                        </div>
+                    @elseif(Route::is('showed'))
                 
                     @csrf
-                    <div class="rounded-full border border-gray-700 hover:bg-blue-700 px-8 mx-auto w-24">  
-                        <button type="submit" class="text-center mx-auto text-black-50">Buy</button>
-                    </div>
-                
-                @endif
+                        <div class="rounded-full border border-gray-700 hover:bg-blue-700 px-8 mx-auto w-24">  
+                            <button type="submit" class="text-center mx-auto text-black-50">Buy</button>
+                        </div>
+                    @endif
+                </form>    
 
-                <div class="px-14 flex justify-center align">
+                <form action="{{ route('wishlist.store', ['id'=>$product->id]) }}" method="POST">
+                    @csrf                    
+                    <input type="hidden" name="user_id" value="{{ Auth::id() ?? '' }}">
+                    <input type="hidden" name="wishlist_id" value="{{ $product->id ?? '' }}">
+                    <div class="px-14 flex justify-center align">
                     <div>  
-                        <a href="{{ route('add_wishlist', $product->id) }}" class="text-center mx-auto text-gray-50">
-                            <img src="/images/heart.png" class="w-6 h-6 mx-auto">
+                        <button type="submit" class="flex">
+                            <img type="submit" src="/images/heart.png" class="w-6 h-6 mx-auto">
+                        </button>
+                    </div>
+                </form>
+                @can('can-edit-product')
+                    <div>  
+                        <a href="/product/{{$product->id}}/edit" class="text-center mx-auto text-gray-50">
+                            <img src="/images/edit.png" class="w-6 h-6 mx-auto">
                         </a>
-                    </div>  
-
-                    @can('can-edit-product')
-                        <div>  
-                            <a href="/product/{{$product->id}}/edit" class="text-center mx-auto text-gray-50">
-                                <img src="/images/edit.png" class="w-6 h-6 mx-auto">
-                            </a>
-                        </div>
-                        <div>
+                    </div>
+                    <div>
+                        <form action="{{ route('delete', $product->id) }}" method="POST" class="text-center mx-auto">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-gray-50">
+                                <img src="/images/delete.png" class="w-6 h-6 mx-auto">
+                            </button>
                         </form>
-                            <form action="{{ route('delete', $product->id) }}" method="POST" class="text-center mx-auto">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="text-gray-50">
-                                    <img src="/images/delete.png" class="w-6 h-6 mx-auto">
-                                </button>
-                            </form>
-                        </div>
-                    @endcan
-                </div>
+                    </div>
+                @endcan
+            </div>
             
         </div>
     </div>
-    </form>
 </div>
 
 

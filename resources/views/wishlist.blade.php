@@ -1,9 +1,9 @@
 <x-background-layout>
     <div class="flex">
-        @forelse ($products as $product)
-            <x-product-card :product="$product" />  
+        @forelse ($wishlist as $wishlist)
+            <x-product-card :wishlist="$wishlist" />  
         @empty
-            <p>No Products</p>
+            <p>No Products inside here :)</p>
         @endforelse
     </div>
 </x-background-layout>

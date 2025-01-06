@@ -19,8 +19,12 @@ class WishListController extends Controller
      */
     public function index()
     {
-        $products = WishList::all();
-        return view('wishlist', ['products' => $products]);
+        $userid =Auth::id();
+
+        $wishlist = WishList::where('user_id', $userid)->with('product')->get();
+        $products = Product::all();
+
+        return view('wishlist', ['wishlist' => $wishlist ,'products' => $products]);
     }
 
     /**
