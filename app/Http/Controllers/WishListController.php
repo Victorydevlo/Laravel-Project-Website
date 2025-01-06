@@ -37,39 +37,30 @@ class WishListController extends Controller
     public function store( $request)  
     {
         $product = Product::find($request->product_id);
-        $basketid = Auth::id();   
+        $userid = Auth::id();   
 
-        if ($product->stock_quantity < $request->quantity) {
-            return redirect()->route('product');
-        }
-
-        $basketItems = WishList::where('basket_id', $basketid)
-        ->where('product_id', $product->id)
+        $wishlist = WishList::where('user_id', $userid)
+        ->where('wishlist_id', $product->id)
         ->first();
 
-        if($basketItems){
-            $basketItems->quantity += $request-> quantity;
+        if($wishlist){
 
-            if ($basketItems->quantity > $product->stock_quantity){
-                return back();
-            }
-            $basketItems->save();
+            return Redirect::route('product');
+            $wishlist->save();
         }else {
-        $basketid = Auth::id();        
-            $basketItems = WishList::create([
-                'basket_id' => $basketid,
-                'product_id' => $product->id,
-                'quantity'=> $request->quantity,
-                'price' => $product->price,
+        $userid = Auth::id();        
+            $wishlist = WishList::create([
+                'user_id' => $userid,
+                'wishlist_id' => $product->id,
                 $request->except('_token', '_method', 'file'),
             ]);
-            $basketItems = $basketItems->fresh();
+            $wishlist = $wishlist->fresh();
         }
 
         $product->stock_quantity -= $request->quantity;
         $product->save();
 
-        return Redirect::route('product', ['basketItem' => $basketItems]);
+        return Redirect::route('product', ['wishlist' => $wishlist]);
     }
 
     /**
