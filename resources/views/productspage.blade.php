@@ -9,4 +9,8 @@
         <p>No Products</p>
     @endforelse
     </div> 
+
+    <div class="mt-6">
+    {{ $products->links() }}
+</div>
 </x-productspage>

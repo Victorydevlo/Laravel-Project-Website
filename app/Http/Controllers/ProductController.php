@@ -33,7 +33,7 @@ class ProductController extends Controller
 
     public function index2(Request $request)
     {
-        $products = Product::all();
+        $products = Product::paginate(15);
         return view('productspage',['products'=>$products]);
 
 
