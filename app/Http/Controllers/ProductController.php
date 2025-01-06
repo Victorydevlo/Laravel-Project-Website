@@ -34,9 +34,6 @@ class ProductController extends Controller
     public function index2(Request $request)
     {
         $products = Product::all();
-        
-     
-        
         return view('productspage',['products'=>$products]);
 
 

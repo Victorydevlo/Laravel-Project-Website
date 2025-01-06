@@ -49,7 +49,7 @@ class WishListController extends Controller
 
         if($wishlist){
 
-            return Redirect::route('product');
+            return back();
         }       
             $wishlist = WishList::create([
                 'user_id' => $userid,

@@ -15,7 +15,7 @@
             <p class="text-sm text-gray-700 text-center">Price: £{{ $basketitem->price }}</p>
             <p class="text-sm text-gray-700 text-center">Quantity: {{ $basketitem->quantity }}</p>
             <p class="text-sm text-gray-700 text-center">Subtotal: £{{ $basketitem->quantity * $basketitem->price }}</p>   
-            <form action="{{ route('delete', $basketitem->id) }}" method="POST" class="remove-item-form">
+            <form action="{{ route('basdelete', $basketitem->id) }}" method="POST" class="remove-item-form">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="remove-btn">Remove</button>

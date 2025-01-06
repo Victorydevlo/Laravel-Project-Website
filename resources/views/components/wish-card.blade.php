@@ -26,8 +26,8 @@
                     <img class="w-8 h-8 mx-auto" src="{{ asset('storage/images/' . $wishlists->product->product_image) }}" alt="product">
                 @endif
                 <div class="rounded-full bg-lime-200 px-8 mx-auto w-24 text-center">{{$wishlists->product->productType->type ?? null}}</div>
-                <p class="text-xl font-semibold text-gray-800 text-center">{{$wishlists->product->name}}</p>
-                <p class="text-base text-center">{{$wishlists->product->title}}</p>
+                <p class="text-xl font-semibold text-gray-800 text-center">{{$wishlists->product->title}}</p>
+                <p class="text-base text-center">{{$wishlists->product->name}}</p>
                 <p class="text-sm text-center">£{{$wishlists->product->price}}</p>
                 
 
@@ -55,18 +55,10 @@
                         </div>
                     @endif
                 </form>    
-
-                <form action="{{ route('wishlist.store', ['id'=>$wishlists->product->id]) }}" method="POST">
-                    @csrf                    
-                    <input type="hidden" name="user_id" value="{{ Auth::id() ?? '' }}">
-                    <input type="hidden" name="wishlist_id" value="{{ $wishlists->product->id ?? '' }}">
+                
                     <div class="px-14 flex justify-center align">
-                    <div>  
-                        <button type="submit" class="flex">
-                            <img type="submit" src="/images/heart.png" class="w-6 h-6 mx-auto">
-                        </button>
-                    </div>
-                </form>
+                    
+            
                 @can('can-edit-product')
                     <div>  
                         <a href="/product/{{$wishlists->product->id}}/edit" class="text-center mx-auto text-gray-50">
