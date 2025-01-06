@@ -19,13 +19,13 @@
             @endif
         <div class="p-2 m-2 rounded-lg border-2 border-blue-900 max-w-md">
             <div class="text-sm">
-                <input name="title" type="text" placeholder="title" value = "{{$product->title ?? ''}}"/>
+                <input name="title" type="text" placeholder="title" value = "{{$product->title ?? ''}}" required/>
             </div>
             <p class="text-sm">
-                <input name="name" type="text" placeholder="artist/author/console" value="{{$product->name ?? ''}}" />
+                <input name="name" type="text" placeholder="artist/author/console" value="{{$product->name ?? ''}}" required />
             </p>
             <p>
-                <input type="number" step='0.01' name="price"  min='0' placeholder="price" value="{{($product->price ?? 0)}}" />
+                <input type="number" step='0.01' name="price"  min='0' placeholder="price" value="{{($product->price ?? 0)}}" required />
             </p>
             <select name='product_type_id'>
             @foreach ($producttypes as $producttype)

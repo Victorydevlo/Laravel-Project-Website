@@ -12,7 +12,7 @@
 <!-- Only display CD!-->
     <div class="flex justify-end mr-5" style="margin-top: 5;">
         <div class="rounded-none border border-gray-700 text-center inline-block">
-            <a href="/producttype" class="px-4 py-2 block">More</a>
+            <a href="/products" class="px-4 py-2 block">More</a>
         </div>
     </div>
     <h2 class="text-3xl font-bold text-center">CD Products</h2>
@@ -27,7 +27,7 @@
 <!-- Only display Game!-->
         <div class="flex justify-end mr-5" style="margin-top: 5;">
         <div class="rounded-none border border-gray-700 text-center inline-block">
-            <a href="/producttype" class="px-4 py-2 block">More</a>
+            <a href="/products" class="px-4 py-2 block">More</a>
         </div>
     </div>
     <h2 class="text-3xl font-bold text-center">Game Products</h2>
@@ -43,7 +43,7 @@
 <!-- Only display Game!-->
         <div class="flex justify-end mr-5" style="margin-top: 5;">
         <div class="rounded-none border border-gray-700 text-center inline-block">
-            <a href="/producttype" class="px-4 py-2 block">More</a>
+            <a href="/products" class="px-4 py-2 block">More</a>
         </div>
     </div>
     <h2 class="text-3xl font-bold text-center">Book Products</h2>

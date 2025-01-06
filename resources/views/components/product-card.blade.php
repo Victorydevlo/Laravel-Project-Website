@@ -11,6 +11,16 @@
             @endif
         </div>
 
+        @if ($errors->any())
+        <div class="bg-red-600 border-solid rounded-md border-2 border-red-700">
+            <ul>
+            @foreach ($errors->all() as $error)
+            <li class="text-lg text-gray-100">{{ $error }}</li>
+            @endforeach
+            </ul>
+        </div>
+            @endif
+            
         <div style="position: absolute; top: 5px; left: 5px; text-align: center;">
         <div class="quanty"> {{$product->stock_quantity}} </div>
         </div>
