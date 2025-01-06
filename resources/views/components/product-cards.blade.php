@@ -61,7 +61,7 @@
     color: #fff;
     border: none;
     padding: 0.5rem 1rem;
-    border-radius: 4px;
+    border-radius: 20px;
     cursor: pointer;
     font-size: 0.9rem;
     font-weight: bold;

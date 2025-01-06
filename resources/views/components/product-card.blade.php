@@ -4,6 +4,7 @@
     <div class="stockcard">
         <div style="position: absolute; top: 5px; right: 5px; text-align: center;">
             @if($product-> stock_quantity <= 0)
+            
                 <div class="out">Out of stock</div>
             @else 
                 <div class="in">In Stock</div>
@@ -38,7 +39,7 @@
                     <input type="hidden" name="basket_id" value="{{ Auth::id() ?? '' }}">
                     @if(Route::is('showed'))
                         <p>
-                            <input type="number" step='1' name="quantity"  placeholder="Enter Amount" value = '1'/>
+                            <input type="number" step='1' name="quantity"  placeholder="Enter Amount" value = '1' min='0'/>
                         </p>     
                     @endif
 
@@ -142,4 +143,5 @@
     border: 2px solid #94a3b8;
     color: #020617;
 }
+
 </style>

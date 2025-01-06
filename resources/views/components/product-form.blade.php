@@ -25,7 +25,7 @@
                 <input name="name" type="text" placeholder="artist/author/console" value="{{$product->name ?? ''}}" />
             </p>
             <p>
-                <input type="number" step='0.01' name="price"  placeholder="price" value="{{($product->price ?? 0)}}" />
+                <input type="number" step='0.01' name="price"  min='0' placeholder="price" value="{{($product->price ?? 0)}}" />
             </p>
             <select name='product_type_id'>
             @foreach ($producttypes as $producttype)
@@ -47,7 +47,7 @@
                 <input type="file" name="file" id="file" value="{{$product->product_image ?? ''}}">
             </div>
             <p>
-                <input type="number" step='1' name="stock_quantity"  placeholder="stock_quantity" value="{{($product->stock_quantity ?? 0)}}" />
+                <input type="number" step='1' min='0' name="stock_quantity"  placeholder="stock_quantity" value="{{($product->stock_quantity ?? 0)}}" />
             </p>            
             <div>
                 @if(Route::is('create'))

@@ -91,7 +91,9 @@ class WishListController extends Controller
      */
     public function destroy(int $id)
     {
-        //
+        $wishlists = WishList::find($id);
+        $wishlists ->delete();
+        return Redirect::route('wishlist');
     }
 
     public function add( $request, $id)

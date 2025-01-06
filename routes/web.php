@@ -34,6 +34,9 @@ Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('del
 //Product Type Delete
 Route::delete('/producttype/{id}', [ProductTypeController::class, 'destroy'])->name('ptdelete');
 
+Route::delete('/basketdel/{id}', [BasketController::class, 'destroy'])->name('basdelete');
+
+Route::delete('/wishlistdel/{id}', [WishListController::class, 'destroy'])->name('wisdelete');
 
 //Product Home Page
 Route::get('/', [ProductController::class, 'index'])->name('product');

@@ -38,7 +38,7 @@
                     <input type="hidden" name="basket_id" value="{{ Auth::id() ?? '' }}">
                     @if(Route::is('showed'))
                         <p>
-                            <input type="number" step='1' name="quantity"  placeholder="Enter Amount" value = '1'/>
+                            <input type="number" step='1' name="quantity"  placeholder="Enter Amount" value = '1' min='0'/>
                         </p>     
                     @endif
 
@@ -54,29 +54,14 @@
                             <button type="submit" class="text-center mx-auto text-black-50">Buy</button>
                         </div>
                     @endif
-                </form>    
-                
-                    <div class="px-14 flex justify-center align">
-                    
-            
-                @can('can-edit-product')
-                    <div>  
-                        <a href="/product/{{$wishlists->product->id}}/edit" class="text-center mx-auto text-gray-50">
-                            <img src="/images/edit.png" class="w-6 h-6 mx-auto">
-                        </a>
-                    </div>
-                    <div>
-                        <form action="{{ route('delete', $wishlists->product->id) }}" method="POST" class="text-center mx-auto">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-gray-50">
-                                <img src="/images/delete.png" class="w-6 h-6 mx-auto">
-                            </button>
-                        </form>
-                    </div>
-                @endcan
-            </div>
-            
+                </form>
+                <div class="px-14 flex justify-center align">                    
+                <form action="{{ route('wisdelete', $wishlists->id) }}" method="POST" class="remove-item-form">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="remove-btn">Remove</button>
+            </form>
+            </div>            
         </div>
     </div>
 </div>
@@ -133,5 +118,17 @@
     background-color: #cbd5e1;
     border: 2px solid #94a3b8;
     color: #020617;
+}
+
+.remove-btn {
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 </style>

@@ -115,7 +115,9 @@ class BasketController extends Controller
      */
     public function destroy(int $id)
     {
-        //
+        $basketitem = BasketItem::find($id);
+        $basketitem ->delete();
+        return Redirect::route('basket');
     }
 
     public function add(StoreBasketItemRequest $request, $id)
