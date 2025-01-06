@@ -22,9 +22,9 @@ class WishListController extends Controller
         $userid =Auth::id();
 
         $wishlist = WishList::where('user_id', $userid)->with('product')->get();
-        $products = Product::all();
+        $product = Product::all();
 
-        return view('wishlist', ['wishlist' => $wishlist ,'products' => $products]);
+        return view('wishlist', ['wishlist' => $wishlist, 'product' => $product]);
     }
 
     /**
@@ -38,9 +38,9 @@ class WishListController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store( $request)  
+    public function store(StoreWishListRequest $request)  
     {
-        $product = Product::find($request->product_id);
+        $product = Product::find($request->wishlist_id);
         $userid = Auth::id();   
 
         $wishlist = WishList::where('user_id', $userid)
@@ -50,19 +50,12 @@ class WishListController extends Controller
         if($wishlist){
 
             return Redirect::route('product');
-            $wishlist->save();
-        }else {
-        $userid = Auth::id();        
+        }       
             $wishlist = WishList::create([
                 'user_id' => $userid,
                 'wishlist_id' => $product->id,
                 $request->except('_token', '_method', 'file'),
-            ]);
-            $wishlist = $wishlist->fresh();
-        }
-
-        $product->stock_quantity -= $request->quantity;
-        $product->save();
+            ]);        
 
         return Redirect::route('product', ['wishlist' => $wishlist]);
     }

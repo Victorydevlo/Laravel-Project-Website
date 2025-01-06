@@ -56,8 +56,6 @@ Route::get('/products/{id}', [ProductController::class, 'showed'])->name('showed
 
 Route::get('/wishlist', [WishListController::class, 'index'])->name('wishlist');
 
-Route::get('/wishlists', [ProductController::class, 'add_wishlist'])->name('add_wishlist');
-
 //SEARCH
 Route::get('/search', [ProductController::class, 'search'])->name('search');
 

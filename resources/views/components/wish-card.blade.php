@@ -1,9 +1,9 @@
 <div class="products-container"> 
-<form action="{{ route('basketitem.store', ['id'=>$product->id]) }}" method="POST">
+<form action="{{ route('basketitem.store', ['id'=>$wishlists->product->id]) }}" method="POST">
     @csrf
     <div class="stockcard">
         <div style="position: absolute; top: 5px; right: 5px; text-align: center;">
-            @if($product-> stock_quantity <= 0)
+            @if($wishlists->product-> stock_quantity <= 0)
                 <div class="out">Out of stock</div>
             @else 
                 <div class="in">In Stock</div>
@@ -11,30 +11,30 @@
         </div>
 
         <div style="position: absolute; top: 5px; left: 5px; text-align: center;">
-        <div class="quanty"> {{$product->stock_quantity}} </div>
+        <div class="quanty"> {{$wishlists->product->stock_quantity}} </div>
         </div>
 
         <div class="product-card">
             <form action="{{ route('product') }}" method="POST">
-                @if($product['product_image'] == 'A')
+                @if($wishlists->product['product_image'] == 'A')
                     <a><img src="/images/pimage/book.png" class="w-8 h-8 mx-auto"></a>
-                @elseif($product['product_image'] == 'B')
+                @elseif($wishlists->product['product_image'] == 'B')
                     <a><img src="/images/pimage/cd.png" class="w-8 h-8 mx-auto"></a>
-                @elseif($product['product_image'] == 'C')
+                @elseif($wishlists->product['product_image'] == 'C')
                     <a><img src="/images/pimage/joystick.png" class="w-8 h-8 mx-auto"></a>
                 @else
-                    <img class="w-8 h-8 mx-auto" src="{{ asset('storage/images/' . $product->product_image) }}" alt="product">
+                    <img class="w-8 h-8 mx-auto" src="{{ asset('storage/images/' . $wishlists->product->product_image) }}" alt="product">
                 @endif
-                <div class="rounded-full bg-lime-200 px-8 mx-auto w-24 text-center">{{$product->productType->type ?? null}}</div>
-                <p class="text-xl font-semibold text-gray-800 text-center">{{$product->name}}</p>
-                <p class="text-base text-center">{{$product->title}}</p>
-                <p class="text-sm text-center">£{{$product->price}}</p>
+                <div class="rounded-full bg-lime-200 px-8 mx-auto w-24 text-center">{{$wishlists->product->productType->type ?? null}}</div>
+                <p class="text-xl font-semibold text-gray-800 text-center">{{$wishlists->product->name}}</p>
+                <p class="text-base text-center">{{$wishlists->product->title}}</p>
+                <p class="text-sm text-center">£{{$wishlists->product->price}}</p>
                 
 
                 
 
-                    <input type="hidden" name="price" value="{{ $product->price ?? '' }}">
-                    <input type="hidden" name="product_id" value="{{ $product->id ?? '' }}">
+                    <input type="hidden" name="price" value="{{ $wishlists->product->price ?? '' }}">
+                    <input type="hidden" name="product_id" value="{{ $wishlists->product->id ?? '' }}">
                     <input type="hidden" name="basket_id" value="{{ Auth::id() ?? '' }}">
                     @if(Route::is('showed'))
                         <p>
@@ -45,7 +45,7 @@
 
                     @if(Route::is('product', 'productpage', 'wishlist', 'filter'))   
                         <div class="rounded-full border border-gray-700 hover:bg-blue-700 px-8 mx-auto w-24">  
-                            <a href="/products/{{$product->id}}" class="text-center mx-auto text-black-50">Select</a>
+                            <a href="/products/{{$wishlists->product->id}}" class="text-center mx-auto text-black-50">Select</a>
                         </div>
                     @elseif(Route::is('showed'))
                 
@@ -56,10 +56,10 @@
                     @endif
                 </form>    
 
-                <form action="{{ route('wishlist.store', ['id'=>$product->id]) }}" method="POST">
+                <form action="{{ route('wishlist.store', ['id'=>$wishlists->product->id]) }}" method="POST">
                     @csrf                    
                     <input type="hidden" name="user_id" value="{{ Auth::id() ?? '' }}">
-                    <input type="hidden" name="wishlist_id" value="{{ $product->id ?? '' }}">
+                    <input type="hidden" name="wishlist_id" value="{{ $wishlists->product->id ?? '' }}">
                     <div class="px-14 flex justify-center align">
                     <div>  
                         <button type="submit" class="flex">
@@ -69,12 +69,12 @@
                 </form>
                 @can('can-edit-product')
                     <div>  
-                        <a href="/product/{{$product->id}}/edit" class="text-center mx-auto text-gray-50">
+                        <a href="/product/{{$wishlists->product->id}}/edit" class="text-center mx-auto text-gray-50">
                             <img src="/images/edit.png" class="w-6 h-6 mx-auto">
                         </a>
                     </div>
                     <div>
-                        <form action="{{ route('delete', $product->id) }}" method="POST" class="text-center mx-auto">
+                        <form action="{{ route('delete', $wishlists->product->id) }}" method="POST" class="text-center mx-auto">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-gray-50">

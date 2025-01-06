@@ -1,9 +1,14 @@
 <x-background-layout>
+    <div class="flex justify-end mr-5" style="margin-bottom: 20;">
+    </div>   
+
     <div class="flex">
-        @forelse ($wishlist as $wishlist)
-            <x-product-card :wishlist="$wishlist" />  
+        @forelse ($wishlist as $wishlists)
+            <x-wish-card :wishlists="$wishlists" />
         @empty
-            <p>No Products inside here :)</p>
+            <div class="empty-basket">
+                <p>Your basket is currently empty.</p>
+            </div>
         @endforelse
     </div>
 </x-background-layout>

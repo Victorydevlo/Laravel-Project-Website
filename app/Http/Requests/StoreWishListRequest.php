@@ -22,7 +22,7 @@ class StoreWishListRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'product_id' => 'required|exists:products,id',
+            'wishlist_id' => 'required|exists:products,id',
         ];
     }
 }
