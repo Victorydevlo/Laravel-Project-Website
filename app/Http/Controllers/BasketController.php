@@ -55,7 +55,7 @@ class BasketController extends Controller
         $basketid = Auth::id();   
 
         if ($product->stock_quantity < $request->quantity) {
-            return redirect()->route('product');
+            return back();
         }
 
         $basketItems = BasketItem::where('basket_id', $basketid)
@@ -120,6 +120,16 @@ class BasketController extends Controller
     {
         $basketitem = BasketItem::find($id);
         $basketitem ->delete();
+
+        $product = Product::find($basketitem->product_id);
+
+        if ($product) {
+            // Add the quantity back to the product's stock
+            $product->stock_quantity += $basketitem->quantity;
+            $product->save();
+        }
+
+
         return Redirect::route('basket');
     }
 

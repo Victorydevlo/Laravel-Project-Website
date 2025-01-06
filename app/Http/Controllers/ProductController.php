@@ -50,7 +50,7 @@ class ProductController extends Controller
         } elseif ($type == "Game") {
             $products = Product::where("product_type_id", 3)->get();
         } elseif ($type == "A-Z") {
-            $products = Product::orderBy("name", "asc")->get();
+            $products = Product::orderBy("title", "asc")->get();
         } elseif ($type == "Low") {
             $products = Product::orderBy("price", "asc")->get();
         } elseif ($type == "High") {
