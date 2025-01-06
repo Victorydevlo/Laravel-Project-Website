@@ -18,7 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all()->random()->limit(5)->get();
+        $products = Product::inRandomOrder()->limit(5)->get();
 
         $productrandomcd = Product::where("product_type_id", 2)->limit(5)->get();
 
