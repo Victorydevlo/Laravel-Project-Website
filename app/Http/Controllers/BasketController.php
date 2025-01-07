@@ -59,6 +59,10 @@ class BasketController extends Controller
             return back()->with('error', 'out of stock.');
         }
 
+        if (!$product) {
+            return back()->with('error', 'out of stock.');
+        }
+        
         if ($product->stock_quantity < $request->quantity) {
             return back()->with('error', 'Request is higher than stock available');
         }
