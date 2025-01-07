@@ -2,7 +2,7 @@
     <div class="flex justify-end mr-5" style="margin-bottom: 20;">
     </div>   
 
-    <div class="flex">
+    <div class="flex flex-wrap justify-start gap-5">
         @forelse ($wishlist as $wishlists)
             <x-wish-card :wishlists="$wishlists" />
         @empty

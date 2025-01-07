@@ -1,3 +1,4 @@
+<!-- resources/views/components/wish-card.blade.php -->
 <div class="products-container"> 
 <form action="{{ route('basketitem.store', ['id'=>$wishlists->product->id]) }}" method="POST">
     @csrf
