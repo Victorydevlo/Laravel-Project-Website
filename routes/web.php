@@ -65,7 +65,7 @@ Route::get('/search', [ProductController::class, 'search'])->name('search');
 Route::get('/basket/create', [BasketController::class, 'create'])->name('creation2');
 
 
-
+Route::get('/welcomery', [ProductController::class, 'test'])->name('welcomery');
 
 // Update and Store Routes
 Route::post('/product', [ProductController::class, 'store'])->middleware('can:create,App\Models\Product')->name('product.store');

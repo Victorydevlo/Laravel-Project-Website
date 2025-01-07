@@ -15,11 +15,11 @@
         </div>
           
             <form action="{{ route('ptdelete', $producttype->id) }}" method="POST">
-                    @csrf
+                @csrf
                 @method('DELETE')
-                <div class="rounded-none border bg-red-600 px-6 py-2 m-3 w-26 text-center">
-                    <a href="" class="text-stone-50 hover:text-stone-50 transition duration-300">Delete</a>
-                    </div>
+                <button type="submit" class="rounded-none border bg-red-600 px-6 py-2 m-3 w-26 text-center text-stone-50 hover:text-stone-50 transition duration-300">
+                Delete
+            </button>
             </form>
     </div>
         

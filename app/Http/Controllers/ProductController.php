@@ -163,11 +163,11 @@ class ProductController extends Controller
 }
 
 
-public function add_wishlist(Request $request)
+public function test(Request $request)
 {
     
 
-    return Redirect::back();
+    return view('welcome');
 
 }
 }

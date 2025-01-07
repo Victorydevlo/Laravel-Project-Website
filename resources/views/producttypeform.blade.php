@@ -12,9 +12,3 @@
     </div> 
 </x-background-layout>
 
-<style>
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}

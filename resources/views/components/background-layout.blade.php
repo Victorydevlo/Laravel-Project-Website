@@ -5,11 +5,8 @@
 <header class="bg-gray-100 py-4 shadow-md">
     <div class="container mx-auto px-6">
         <div class="flex justify-between items-center">
-            <!-- Logo or Title -->
             <h1 class="text-lg font-semibold text-gray-800">INTEL SHOP</h1>
-
             @auth
-            <!-- Dropdown for Authenticated User -->
             <x-dropdown align="right" width="48">
                 <x-slot name="trigger">
                     <button class="flex items-center text-sm font-medium text-gray-600 hover:text-gray-800 focus:outline-none transition ease-in-out duration-150">
@@ -36,9 +33,8 @@
             </x-dropdown>
 
             @else
-            <!-- Login and Register Links for Guests -->
             <div class="flex items-center space-x-6">
-                <a href="{{ route('login') }}" class="text-sm text-gray-700 border border-gray-700 px-4 py-2 hover:text-blue-700 hover:border-blue-700 transition duration-300">
+                <a href="{{ route('login') }}" class="text-sm text-gray-700 border border-gray-700 px-4 py-2 hover:text-blue-700 hover:border-blue-700 transition duration-300" style="margin-right:10;">
                     Login
                 </a>
                 @if (Route::has('register'))
