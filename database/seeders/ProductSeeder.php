@@ -14,8 +14,8 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         $products = [
-            ['name' => 'The Jam', 'title' => 'Modern World','price' => 399, 'product_type_id' => 1, 'product_image' => 'A', 'stock_quantity' => 100],
-            ['name' => 'Amy Winehouse', 'title' => 'Back to Black','price' => 299,'product_type_id' => 1, 'product_image' => 'A', 'stock_quantity' => 0],
+            ['name' => 'The Jam', 'title' => 'Modern World','price' => 3.99, 'product_type_id' => 1, 'product_image' => 'A', 'stock_quantity' => 100],
+            ['name' => 'Amy Winehouse', 'title' => 'Back to Black','price' => 2.99,'product_type_id' => 1, 'product_image' => 'A', 'stock_quantity' => 0],
         ];
 
         foreach($products as $product) {
