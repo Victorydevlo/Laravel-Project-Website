@@ -1,4 +1,10 @@
 <div class="products-container"> 
+
+@if (session('error'))
+    <div class="bg-red-600 text-white px-4 py-2 rounded shadow-lg w-fit">
+        {{ session('error') }}
+    </div>
+        @endif
 <form action="{{ route('basketitem.store', ['id'=>$product->id]) }}" method="POST">
     @csrf
     <div class="stockcard">
@@ -10,16 +16,6 @@
                 <div class="in">In Stock</div>
             @endif
         </div>
-
-        @if ($errors->any())
-        <div class="bg-red-600 border-solid rounded-md border-2 border-red-700">
-            <ul>
-            @foreach ($errors->all() as $error)
-            <li class="text-lg text-gray-100">{{ $error }}</li>
-            @endforeach
-            </ul>
-        </div>
-            @endif
             
         <div style="position: absolute; top: 5px; left: 5px; text-align: center;">
         <div class="quanty"> {{$product->stock_quantity}} </div>

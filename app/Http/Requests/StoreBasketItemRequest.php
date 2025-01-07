@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Product;
+
 
 class StoreBasketItemRequest extends FormRequest
 {
@@ -24,6 +26,14 @@ class StoreBasketItemRequest extends FormRequest
         return [
             'product_id' => 'required|exists:products,id',
             'quantity' => 'required|integer|min:1',
+
+            function($attribute, $value, $fail){
+                $stock_quantity = Product::find($this->id)->stock_quantity;
+
+                if ($value > $stock_quantity) {
+                    $fail('Not Enough in Stuck');
+                }
+            }
         ];
     }
 }

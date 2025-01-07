@@ -54,9 +54,16 @@ class BasketController extends Controller
         $product = Product::find($request->product_id);
         $basketid = Auth::id();   
 
-        if ($product->stock_quantity < $request->quantity) {
-            return back();
+
+        if ($product->stock_quantity = 0) {
+            return back()->with('error', 'out of stock.');
         }
+
+        if ($product->stock_quantity < $request->quantity) {
+            return back()->with('error', 'Request is higher than stock available');
+        }
+
+
 
         $basketItems = BasketItem::where('basket_id', $basketid)
         ->where('product_id', $product->id)

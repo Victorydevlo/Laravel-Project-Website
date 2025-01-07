@@ -1,5 +1,11 @@
 <!-- resources/views/components/wish-card.blade.php -->
 <div class="products-container"> 
+
+@if (session('error'))
+    <div class="bg-red-600 text-white px-4 py-2 rounded shadow-lg w-fit">
+        {{ session('error') }}
+    </div>
+        @endif
 <form action="{{ route('basketitem.store', ['id'=>$wishlists->product->id]) }}" method="POST">
     @csrf
     <div class="stockcard">

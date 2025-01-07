@@ -1,4 +1,10 @@
 <div class="products-container">
+
+@if (session('error'))
+    <div class="bg-red-600 text-white px-4 py-2 rounded shadow-lg w-fit">
+        {{ session('error') }}
+    </div>
+        @endif
     <div class="stockcard">
         <div class="product-card">
             @if($basketitem->product->product_image == 'A')
