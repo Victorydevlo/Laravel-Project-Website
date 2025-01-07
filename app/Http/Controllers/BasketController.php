@@ -21,7 +21,7 @@ class BasketController extends Controller
     {
         $basket_id =Auth::id();
 
-        $basketitems = BasketItem::where('basket_id', $basket_id)->with('product')->get();
+        $basketitems = BasketItem::where('basket_id', $basket_id)->with('product')->paginate(15);
 
         $products = Product::all();
         

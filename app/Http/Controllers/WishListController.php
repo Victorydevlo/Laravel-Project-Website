@@ -21,7 +21,7 @@ class WishListController extends Controller
     {
         $userid =Auth::id();
 
-        $wishlist = WishList::where('user_id', $userid)->with('product')->get();
+        $wishlist = WishList::where('user_id', $userid)->with('product')->paginate(15);
         $product = Product::all();
 
         return view('wishlist', ['wishlist' => $wishlist, 'product' => $product]);

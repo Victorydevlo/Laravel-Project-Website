@@ -11,4 +11,9 @@
             </div>
         @endforelse
     </div>
+
+    <div class="mt-6">
+    {{ $wishlist->links() }}
+    
+</div>    
 </x-background-layout>

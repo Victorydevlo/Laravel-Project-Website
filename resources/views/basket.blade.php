@@ -11,4 +11,9 @@
             </div>
         @endforelse
     </div>
+
+    <div class="mt-6">
+    {{ $basketitems->links() }}
+    
+</div>
 </x-background-layout>
