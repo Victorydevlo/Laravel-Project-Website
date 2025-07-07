@@ -8,11 +8,19 @@ use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\WishListController;
 
 
+<<<<<<< HEAD
 //Product Create
 Route::get('/product/create', [ProductController::class, 'create'])->middleware('can:create,App\Models\Product')->name('create');
 
 
 //Product Type Create
+=======
+//Product Creates
+Route::get('/product/create', [ProductController::class, 'create'])->middleware('can:create,App\Models\Product')->name('create');
+
+
+//Product Type Creates
+>>>>>>> 0d7aa3e21fb23dcc38ca0b4d61d6c32269612658
 Route::get('/producttype/create', [ProductTypeController::class, 'create'])->name('createtp');
 
 
