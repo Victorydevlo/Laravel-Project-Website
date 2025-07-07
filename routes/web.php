@@ -8,7 +8,7 @@ use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\WishListController;
 
 
-//Product Create
+//Product Creates
 Route::get('/product/create', [ProductController::class, 'create'])->middleware('can:create,App\Models\Product')->name('create');
 
 
